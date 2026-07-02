@@ -1,7 +1,7 @@
 import { FaGlobe, FaHome } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import breadcrumb from "@/assets/quran.jpg";
+import breadcrumb from "@/assets/course/bedcrum-bg.jpg";
 
 type TBreadcrumbs = {
   title: string;
@@ -9,55 +9,50 @@ type TBreadcrumbs = {
 
 const Breadcrumbs = ({ title }: TBreadcrumbs) => {
   return (
-    <div className="relative pt-24 sm:pt-32 md:pt-36 lg:pt-48 pb-8 md:pb-10 overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full">
-        <Image
-          src={breadcrumb}
-          alt="Breadcrumb Background"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-20"
-        />
-      </div>
+    <section className="relative overflow-hidden pt-28 md:pt-36 lg:pt-48 pb-12">
+      {/* Background */}
+      <Image
+        src={breadcrumb}
+        alt="Breadcrumb Background"
+        fill
+        priority
+        className=" absolute object-cover top-0 right-0 left-0 w-full h-full"
+      />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-from-t bg-gradient-to-b from-primary/80  to-dark/20"></div>
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center">
 
-      {/* Additional gradient for better depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40"></div>
-
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Top section */}
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 drop-shadow-lg">
+          <h1 className="mt-4 text-white text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
             আপনার কুরআন শিক্ষার যাত্রা শুরু করুন
           </h1>
-          <p className="text-base md:text-lg lg:text-2xl text-white/90 mb-8 drop-shadow-md">
-            আমাদের অভিজ্ঞ শিক্ষকদের সাথে অনলাইনে কুরআন শিখুন
+
+          <p className="mt-5 text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-8">
+            আমাদের অভিজ্ঞ শিক্ষকদের সাথে অনলাইনে সহজ ও সুন্দরভাবে
+            কুরআন শিখুন।
           </p>
         </div>
 
-        {/* Bottom section */}
-        <div className="w-fit relative top-0 left-12 md:left-24 lg:left-40 xl:left-64 duration-300 flex flex-col justify-end">
-          <h1 className="font-semibold text-white text-lg md:text-xl lg:text-2xl leading-snug uppercase drop-shadow-lg mb-2">
-            {title}
-          </h1>
-          <div className="text-white uppercase flex items-center gap-2 text-sm md:text-base drop-shadow-md">
+        <div className="mt-12 flex justify-center md:justify-start">
+          <div className="inline-flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md px-6 py-4 shadow-2xl">
             <Link
-              className="flex items-center gap-2 mr-2 text-xs hover:text-white/80 transition-colors duration-200"
               href="/"
+              className="flex items-center gap-2 text-white hover:text-yellow-400 transition"
             >
-              <FaHome className="size-3" />
-              হোম
+              <FaHome className="text-sm" />
+              <span>হোম</span>
             </Link>
-            <FaGlobe className="size-3 ml-3" />
-            <span>{title}</span>
+
+            <span className="text-white/40">/</span>
+
+            <FaGlobe className="text-yellow-400" />
+
+            <span className="font-semibold uppercase text-yellow-400">
+              {title}
+            </span>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

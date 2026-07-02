@@ -60,7 +60,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-primary via-emerald-600 to-teal-600 flex flex-col md:flex-row items-center justify-center overflow-y-hidden">
+    <div className="h-screen bg-gradient-to-br from-[#374868] via-[#374868] to-teal-600 flex flex-col md:flex-row items-center justify-center overflow-y-hidden">
       {/* Left Panel - Auth Sidebar */}
       <AuthSidebar />
 
@@ -105,11 +105,11 @@ export default function LoginPage() {
               <input
                 type="email"
                 {...register("email", { required: "Email is required" })}
-                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-primary transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
+                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-[#374868] transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
                 placeholder="Enter your email address"
                 disabled={isLoading}
               />
-              <MdEmail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors duration-300" />
+              <MdEmail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#374868] transition-colors duration-300" />
             </div>
             {errors.email && (
               <p className="text-red-500 text-sm mt-2 flex items-center">
@@ -130,15 +130,15 @@ export default function LoginPage() {
                 {...register("password", {
                   required: "Password is required",
                 })}
-                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-primary transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
+                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-[#374868] transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
                 placeholder="Enter your password"
                 disabled={isLoading}
               />
-              <MdLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors duration-300" />
+              <MdLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#374868] transition-colors duration-300" />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary transition-colors duration-300"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#374868] transition-colors duration-300"
                 disabled={isLoading}
               >
                 {showPassword ? <MdVisibilityOff /> : <MdVisibility />}
@@ -152,7 +152,7 @@ export default function LoginPage() {
             )}
           </div>
           <Link href="/forget-password" className="mb-8 flex justify-end">
-            <p className="text-darker hover:text-primary transition-colors duration-300 flex items-center gap-2">
+            <p className="text-darker hover:text-[#374868] transition-colors duration-300 flex items-center gap-2">
               <MdVpnKey className="text-sm" />
               Forgot Password?
             </p>
@@ -165,7 +165,7 @@ export default function LoginPage() {
             className={`w-full py-4 rounded-xl font-semibold text-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group ${
               isLoading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-primary to-emerald-600 hover:from-primary hover:to-primary text-white hover:shadow-xl transform hover:-translate-y-1"
+                : "bg-gradient-to-r from-[#374868] to-[#374868] hover:from-[#374868] hover:to-[#374868] text-white hover:shadow-xl transform hover:-translate-y-1"
             }`}
           >
             {isLoading ? (
@@ -182,7 +182,7 @@ export default function LoginPage() {
           </button>
           {/* Continue without Login Link */}
           <Link className="flex justify-center mt-8" href="/">
-            <span className="text-primary font-semibold text-sm cursor-pointer">
+            <span className="text-[#374868] font-semibold text-sm cursor-pointer">
               Continue without Login
             </span>
           </Link>
@@ -193,9 +193,9 @@ export default function LoginPage() {
           <p className="text-sm text-darker text-center">
             Don't have an account?{" "}
             <Link href="/register" className="group">
-              <span className="text-primary font-bold hover:text-emerald-600 transition-colors duration-300 relative">
+              <span className="text-[#374868] font-bold hover:text-[#374868] transition-colors duration-300 relative">
                 Create Account
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#374868] group-hover:w-full transition-all duration-300"></span>
               </span>
             </Link>
           </p>

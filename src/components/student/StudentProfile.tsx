@@ -167,7 +167,7 @@ export default function StudentProfile() {
               <div className="w-2xl flex items-end justify-end mb-4">
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="mt-2 sm:mt-0 flex items-center gap-1 text-green-600"
+                  className="mt-2 sm:mt-0 flex items-center gap-1 text-[#374868]"
                 >
                   <AiOutlineEdit size={20} />
                   Edit
@@ -221,7 +221,7 @@ export default function StudentProfile() {
             </section>
           ) : (
             // EDIT MODE
-            <section className="w-3xl mx-auto bg-white p-6 rounded-lg shadow-xl shadow-green-200 mt-6">
+            <section className="w-3xl mx-auto bg-white p-6 rounded-lg shadow-xl shadow-[#3748688c] mt-6">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                 Edit Profile
               </h2>
@@ -291,7 +291,7 @@ export default function StudentProfile() {
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="px-6 py-2 bg-light rounded-md"
+                    className="px-6 py-2 bg-[#dde1e7] rounded-md"
                   >
                     Back To Profile
                   </button>
@@ -301,7 +301,7 @@ export default function StudentProfile() {
                     className={`px-6 py-2 rounded-md transition-all duration-300 flex items-center justify-center gap-2 ${
                       isSaving
                         ? "bg-gray-400 cursor-not-allowed text-white"
-                        : "bg-primary text-white hover:bg-primary/90"
+                        : "bg-[#374868] text-white hover:bg-[#1d3d7c]"
                     }`}
                   >
                     {isSaving ? (
@@ -349,7 +349,7 @@ function InputField({
           className="mt-1 block w-full border rounded-md p-2 pr-8"
         />
         {icon && (
-          <AiOutlineCheckCircle className="absolute top-3 right-2 text-green-500" />
+          <AiOutlineCheckCircle className="absolute top-3 right-2 text-[#374868]" />
         )}
       </div>
     </div>

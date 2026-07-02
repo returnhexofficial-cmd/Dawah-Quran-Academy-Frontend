@@ -17,7 +17,7 @@ const DashboardTitle = ({
         className && className
       }`}
     >
-      {blackText} <span className="text-primary">{greenText}</span>
+      {blackText} <span className="text-[#374868]">{greenText}</span>
     </h2>
   );
 };

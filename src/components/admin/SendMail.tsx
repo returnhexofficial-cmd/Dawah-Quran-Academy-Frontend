@@ -61,7 +61,7 @@ export default function SendMail() {
       <div className="sm:flex justify-between items-center mt-10">
         <DashboardTitle blackText="Send" greenText="Mail" />
         <button
-          className="bg-primary hover:bg-dark duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
+          className="bg-[#374868] hover:bg-[#08255c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
           onClick={() => setIsMailModalOpen(true)}
         >
           <AiOutlinePlus /> Send Mail
@@ -93,7 +93,7 @@ export default function SendMail() {
                 <input
                   type="text"
                   {...register("subject", { required: true })}
-                  className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md  focus:outline-none focus:border-primary mb-3 ${
+                  className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md  focus:outline-none focus:border-[#374868] mb-3 ${
                     errors.subject && "border border-red-500"
                   }`}
                   disabled={isLoading}
@@ -110,7 +110,7 @@ export default function SendMail() {
                 <textarea
                   placeholder="type here..."
                   {...register("message", { required: true })}
-                  className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${
+                  className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] mb-3 ${
                     errors.message && "border border-red-500"
                   }`}
                   rows={4}
@@ -126,7 +126,7 @@ export default function SendMail() {
               className={`text-center px-3 md:px-5 py-1 md:py-3 rounded-lg cursor-pointer transition-all duration-300 flex items-center justify-center gap-2 ${
                 isLoading
                   ? "bg-gray-400 cursor-not-allowed text-white"
-                  : "bg-primary hover:bg-primary/90 text-white"
+                  : "bg-[#374868] hover:bg-[#08255c] text-white"
               }`}
             >
               {isLoading ? (

@@ -5,6 +5,8 @@ import "../globals.css";
 import { AuthProvider } from "../providers/AuthContext";
 import QueryProvider from "../providers/QueryProvider";
 import { UserProvider } from "../providers/UserContext";
+import NavbarNew from "@/components/layout/NavbarNew";
+import ScrollToTop from "@/utils/ScrollButton";
 
 export const metadata: Metadata = {
   title: "Online Quran Academy",
@@ -23,8 +25,10 @@ export default function RootLayout({
         <QueryProvider>
           <UserProvider>
             <AuthProvider>
-              <Navbar />
+              {/* <Navbar /> */}
+              <NavbarNew/>
               {children}
+              <ScrollToTop/>
               <Footer />
             </AuthProvider>
           </UserProvider>

@@ -72,7 +72,7 @@ export default function AdminSidebar({
 
   return (
     <>
-      <aside className=" bg-primary fixed inset-y-0  overflow-visible z-10 lg:fixed lg:top-0 left-0 h-screen shadow-md  transition-all duration-300 ease-in-out">
+      <aside className=" bg-[#374868] fixed inset-y-0  overflow-visible z-10 lg:fixed lg:top-0 left-0 h-screen shadow-md  transition-all duration-300 ease-in-out">
         <div
           className={` transition-all duration-300 ease-in-out relative overflow-visible ${
             isOpen ? " w-52 px-2" : "w-28 px-5"
@@ -97,7 +97,7 @@ export default function AdminSidebar({
               {/* <span className="text-lg font-medium">DevKon School</span> */}
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute -right-4 top-2 z-50 bg-white border-2 border-primary text-primary rounded-full p-1 text-2xl cursor-pointer"
+                className="absolute -right-4 top-2 z-50 bg-white border-2 border-[#ffd54f] text-[#374868] rounded-full p-1 text-2xl cursor-pointer"
               >
                 <MdKeyboardDoubleArrowLeft />
               </button>
@@ -111,7 +111,7 @@ export default function AdminSidebar({
               />
               <button
                 onClick={() => setIsOpen(true)}
-                className="absolute -right-2 top-2 z-50 bg-white border-2 border-primary text-primary rounded-full p-1 text-2xl cursor-pointer"
+                className="absolute -right-2 top-2 z-50 bg-white border-2 border-[#ffd54f] text-[#374868] rounded-full p-1 text-2xl cursor-pointer"
               >
                 <MdKeyboardDoubleArrowRight />
               </button>
@@ -170,7 +170,7 @@ export default function AdminSidebar({
           {/*  Go to Home Button */}
           <Link
             href="/"
-            className={`flex items-center w-full transition-all duration-200 mt-3 rounded-md p-2 bg-green-500 hover:bg-green-600 text-white relative group ${
+            className={`flex items-center w-full transition-all duration-200 mt-3 rounded-md p-2 bg-[#445f91] hover:bg-[#08255c] text-white relative group ${
               isOpen ? "justify-between" : "justify-center"
             }`}
           >
