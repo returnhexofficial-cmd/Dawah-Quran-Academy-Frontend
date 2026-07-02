@@ -79,7 +79,7 @@ const ChangePassword = () => {
               {...register("oldPassword", { required: true })}
               className={`mt-1 block w-full border ${
                 errors.oldPassword ? "border-red-500" : "border-gray-300"
-              } rounded-md bg-white p-2 text-gray-900 focus:border-[#374868] focus:outline-none`}
+              } rounded-md bg-white p-2 text-gray-900 focus:border-primary focus:outline-none`}
             />
           </div>
 
@@ -93,7 +93,7 @@ const ChangePassword = () => {
               {...register("password", { required: true })}
               className={`mt-1 block w-full border ${
                 errors.password ? "border-red-500" : "border-gray-300"
-              } rounded-md bg-white p-2 text-gray-900 focus:border-[#374868] focus:outline-none`}
+              } rounded-md bg-white p-2 text-gray-900 focus:border-primary focus:outline-none`}
             />
           </div>
 
@@ -107,7 +107,7 @@ const ChangePassword = () => {
               {...register("confirm", { required: true })}
               className={`mt-1 block w-full border ${
                 errors.confirm ? "border-red-500" : "border-gray-300"
-              } rounded-md bg-white p-2 text-gray-900 focus:border-[#374868] focus:outline-none`}
+              } rounded-md bg-white p-2 text-gray-900 focus:border-primary focus:outline-none`}
             />
           </div>
 
@@ -119,7 +119,7 @@ const ChangePassword = () => {
 
           <button
             type="submit"
-            className="w-full mt-4 py-2 bg-[#374868] text-white rounded-md hover:bg-[#1d3d7c] transition"
+            className="w-full mt-4 py-2 bg-primary text-white rounded-md hover:bg-[#1d3d7c] transition"
           >
             Save Changes
           </button>

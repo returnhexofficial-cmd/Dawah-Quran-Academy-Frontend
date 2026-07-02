@@ -61,7 +61,7 @@ export default function ManageNotices() {
       <div className="sm:flex justify-between items-center mt-10">
         <DashboardTitle blackText="Manage" greenText="Notice" />
         <button
-          className="bg-[#374868] hover:bg-[#08255c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
+          className="bg-primary hover:bg-[#08255c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
           onClick={() => setIsNoticeModalOpen(true)}
         >
           <AiOutlinePlus /> Add Notice
@@ -95,7 +95,7 @@ export default function ManageNotices() {
                 <input
                   type="text"
                   {...register("heading", { required: true })}
-                  className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] mb-3 ${
+                  className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${
                     errors.heading && "border border-red-500"
                   }`}
                 />
@@ -111,7 +111,7 @@ export default function ManageNotices() {
                 <textarea
                   placeholder="type here..."
                   {...register("body", { required: true })}
-                  className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] mb-3 ${
+                  className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${
                     errors.body && "border border-red-500"
                   }`}
                   rows={4}
@@ -124,7 +124,7 @@ export default function ManageNotices() {
               className={`text-center px-3 md:px-5 py-1 md:py-3 duration-300 rounded-lg text-white cursor-pointer mt-3 ${
                 isSubmitting
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-[#374868] hover:bg-[#08255c]"
+                  : "bg-primary hover:bg-[#08255c]"
               }`}
               type="submit"
               value={isSubmitting ? "Adding Notice..." : "Add Notice"}

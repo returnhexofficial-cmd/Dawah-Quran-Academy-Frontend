@@ -63,14 +63,14 @@ const Contact = () => {
               whileTap={{ scale: 0.9 }}
               className="relative w-full md:w-[48%] lg:w-full flex justify-between gap-5 2xl:gap-10 items-center  2xl:basis-1/3 p-5 lg:p-8 rounded-lg 2xl:rounded-3xl bg-[#F0F0F0] group"
             >
-              <div className="rounded-full p-4 2xl:p-6 border group-hover:bg-[#374868] duration-300 bg-[#ffd54f] w-fit">
+              <div className="rounded-full p-4 2xl:p-6 border group-hover:bg-primary duration-300 bg-[#ffd54f] w-fit">
                 <AiOutlineMail className=" group-hover:text-white duration-300 size-6 lg:size-8" />
               </div>
               <div className=" w-full flex flex-col lg:gap-5">
-                <h4 className="text-left text-[#374868] text-2xl font-semibold md:text-lg lg:text-4xl">
+                <h4 className="text-left text-primary text-2xl font-semibold md:text-lg lg:text-4xl">
                   মেইল
                 </h4>
-                <article className="text-left  text-[16px] md:text-[14px] lg:text-lg text-[#374868]">
+                <article className="text-left  text-[16px] md:text-[14px] lg:text-lg text-primary">
                   quranacademybd1@gmail.com
                 </article>
               </div>
@@ -80,14 +80,14 @@ const Contact = () => {
               whileTap={{ scale: 0.9 }}
               className="relative w-full md:w-[48%] lg:w-full flex justify-between gap-5 2xl:gap-10 items-center   2xl:basis-1/3 p-5 lg:p-8 rounded-lg 2xl:rounded-3xl bg-[#F0F0F0] group"
             >
-              <div className="rounded-full p-4 2xl:p-6 border group-hover:bg-[#374868] duration-300 bg-[#ffd54f] w-fit">
+              <div className="rounded-full p-4 2xl:p-6 border group-hover:bg-primary duration-300 bg-[#ffd54f] w-fit">
                 <BsTelephone className="size-6 group-hover:text-white duration-300 sm:size-6 lg:size-8" />
               </div>
               <div className=" w-full flex flex-col lg:gap-5">
-                <h4 className="text-left text-[#374868] text-2xl font-semibold md:text-lg lg:text-4xl ">
+                <h4 className="text-left text-primary text-2xl font-semibold md:text-lg lg:text-4xl ">
                   ফোন
                 </h4>
-                <article className="text-left  text-[16px] md:text-[14px] lg:text-lg text-[#374868]">
+                <article className="text-left  text-[16px] md:text-[14px] lg:text-lg text-primary">
                   +880 1775-060181
                 </article>
               </div>
@@ -100,7 +100,7 @@ const Contact = () => {
             <div className="rounded-3xl border border-gray-200 shadow-sm overflow-hidden flex flex-col md:flex-row bg-white">
               {/* Left: Heading + Form */}
               <div className="w-full md:w-1/2 p-8 lg:p-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-[#374868] mb-3">
+                <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3">
                   আপনার কি কোনো প্রশ্ন আছে?
                 </h2>
                 <p className="text-gray-600 mb-8">
@@ -110,7 +110,7 @@ const Contact = () => {
 
                 <form ref={form} onSubmit={sendEmail} className="space-y-4">
                   <input
-                    className="w-full px-5 py-3.5 border border-gray-200 rounded-md outline-none focus:border-[#374868] text-sm"
+                    className="w-full px-5 py-3.5 border border-gray-200 rounded-md outline-none focus:border-primary text-sm"
                     type="text"
                     name="from_name"
                     placeholder="নাম লিখুন"
@@ -118,7 +118,7 @@ const Contact = () => {
                   />
 
                   <input
-                    className="w-full px-5 py-3.5 border border-gray-200 rounded-md outline-none focus:border-[#374868] text-sm"
+                    className="w-full px-5 py-3.5 border border-gray-200 rounded-md outline-none focus:border-primary text-sm"
                     type="email"
                     name="from_email"
                     placeholder="আপনার ইমেইল"
@@ -126,14 +126,14 @@ const Contact = () => {
                   />
 
                   <textarea
-                    className="w-full px-5 py-3.5 border border-gray-200 rounded-md outline-none focus:border-[#374868] text-sm min-h-[140px]"
+                    className="w-full px-5 py-3.5 border border-gray-200 rounded-md outline-none focus:border-primary text-sm min-h-[140px]"
                     name="message"
                     placeholder="আপনার মেসেজ লিখুন"
                   ></textarea>
 
                   <button
                     type="submit"
-                    className="bg-[#374868] text-white py-3.5 px-5 rounded-md hover:bg-[#2c3a5a] transition-colors duration-300"
+                    className="bg-primary text-white py-3.5 px-5 rounded-md hover:bg-[#2c3a5a] transition-colors duration-300"
                   >
                     ম্যাসেজ পাঠান
                   </button>
@@ -141,11 +141,11 @@ const Contact = () => {
 
                 <div className="mt-8 pt-6 border-t border-gray-100 space-y-3">
                   <div className="flex items-center gap-3 text-gray-600 text-sm">
-                    <FaRegClock className="w-4 h-4 text-[#374868] shrink-0" />
+                    <FaRegClock className="w-4 h-4 text-primary shrink-0" />
                     <span>প্রতিদিন যেকোন সময়</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-600 text-sm">
-                    <FaMapMarkerAlt className="w-4 h-4 text-[#374868] shrink-0" />
+                    <FaMapMarkerAlt className="w-4 h-4 text-primary shrink-0" />
                     <span>বাংলাদেশ</span>
                   </div>
                 </div>

@@ -167,7 +167,7 @@ export default function StudentProfile() {
               <div className="w-2xl flex items-end justify-end mb-4">
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="mt-2 sm:mt-0 flex items-center gap-1 text-[#374868]"
+                  className="mt-2 sm:mt-0 flex items-center gap-1 text-primary"
                 >
                   <AiOutlineEdit size={20} />
                   Edit
@@ -301,7 +301,7 @@ export default function StudentProfile() {
                     className={`px-6 py-2 rounded-md transition-all duration-300 flex items-center justify-center gap-2 ${
                       isSaving
                         ? "bg-gray-400 cursor-not-allowed text-white"
-                        : "bg-[#374868] text-white hover:bg-[#1d3d7c]"
+                        : "bg-primary text-white hover:bg-[#1d3d7c]"
                     }`}
                   >
                     {isSaving ? (
@@ -349,7 +349,7 @@ function InputField({
           className="mt-1 block w-full border rounded-md p-2 pr-8"
         />
         {icon && (
-          <AiOutlineCheckCircle className="absolute top-3 right-2 text-[#374868]" />
+          <AiOutlineCheckCircle className="absolute top-3 right-2 text-primary" />
         )}
       </div>
     </div>

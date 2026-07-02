@@ -62,7 +62,7 @@ export default function MyReviews() {
       <div className="sm:flex justify-between items-center mt-10">
         <DashboardTitle blackText="My" greenText="Reviews" />
         <button
-          className="bg-[#374868] hover:bg-[#1d3d7c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
+          className="bg-primary hover:bg-[#1d3d7c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
           onClick={() => setIsReviewModalOpen(true)}
         >
           <AiOutlinePlus /> Add Review
@@ -96,7 +96,7 @@ export default function MyReviews() {
                   {review.status}
                 </p>
               </div>
-              <h4 className="text-lg sm:text-2xl text-[#374868] mb-2">
+              <h4 className="text-lg sm:text-2xl text-primary mb-2">
                 {review.title}
               </h4>
               <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
@@ -124,7 +124,7 @@ export default function MyReviews() {
               <input
                 type="text"
                 {...register("title", { required: true })}
-                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] mb-3 ${
+                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary mb-3 ${
                   errors.title && "border-red-500"
                 }`}
               />
@@ -139,7 +139,7 @@ export default function MyReviews() {
                 {...register("comment", { required: true })}
                 placeholder="৩-৪ লাইনের ভিতর রাখুন"
                 rows={4}
-                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] ${
+                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary ${
                   errors.comment && "border-red-500"
                 }`}
               />
@@ -151,7 +151,7 @@ export default function MyReviews() {
               className={`text-center px-3 md:px-5 py-1 md:py-3 duration-300 rounded-lg text-white cursor-pointer mt-5 flex items-center justify-center gap-2 w-auto ${
                 isSubmittingReview
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-[#374868] hover:bg-[#1d3d7c]"
+                  : "bg-primary hover:bg-[#1d3d7c]"
               }`}
             >
               {isSubmittingReview ? (

@@ -28,12 +28,12 @@ const FeatureCourses = () => {
 
         <div>
           <h2 className="text-3xl lg:text-4xl xl:text-5xl duration-200 text-darker font-bold mb-6  lg:mb-10">
-            <span className="text-[#374868]">ফিচার</span> কোর্সসমূহ
+            <span className="text-primary">ফিচার</span> কোর্সসমূহ
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl group flex flex-col">
-            <div className="relative flex h-64 items-center justify-center overflow-hidden bg-[#374868]">
+            <div className="relative flex h-64 items-center justify-center overflow-hidden bg-primary">
               <div className="transition-transform duration-300 group-hover:scale-110">
                 <Image
                   src={CourseImg}
@@ -42,13 +42,13 @@ const FeatureCourses = () => {
                 />
               </div>
 
-              <span className="absolute left-3 top-3 rounded-full bg-[#ffd54f] px-3 py-1 text-xs font-semibold text-[#374868]">
+              <span className="absolute left-3 top-3 rounded-full bg-[#ffd54f] px-3 py-1 text-xs font-semibold text-primary">
                 এক-এক
               </span>
             </div>
 
             {/* Meta */}
-            <div className="flex items-center justify-between border-b border-gray-100 px-5 py-3 text-xs font-medium text-[#374868]">
+            <div className="flex items-center justify-between border-b border-gray-100 px-5 py-3 text-xs font-medium text-primary">
               <span className="flex items-center gap-1">
                 <HiOutlineUserGroup className="h-4 w-4" />
                 ২৫০ জন ভর্তি
@@ -68,7 +68,7 @@ const FeatureCourses = () => {
             <div className="flex flex-grow flex-col p-5">
               <p className="mb-1 text-xs text-gray-400">ব্যক্তিগত কোর্স</p>
 
-              <h3 className="mb-4 text-base font-bold leading-snug text-[#374868]">
+              <h3 className="mb-4 text-base font-bold leading-snug text-primary">
                 কুরআন তিলাওয়াত ও তাজবিদ কোর্স
               </h3>
 
@@ -98,7 +98,7 @@ const FeatureCourses = () => {
               <div className="flex-grow" />
 
               <div className="mt-4 flex items-center justify-between border-t border-gray-100 pt-4">
-                <span className="text-lg font-bold text-[#374868]">
+                <span className="text-lg font-bold text-primary">
                   ৳৮০০
                   <span className="text-xs font-normal text-gray-400">
                     /মাস
@@ -108,7 +108,7 @@ const FeatureCourses = () => {
                 <Link
                   href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
                   target="_blank"
-                  className="rounded-xl border-2 border-[#374868] bg-[#374868] px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-[#ffd54f] hover:bg-[#ffd54f] hover:text-[#374868]"
+                  className="rounded-xl border-2 border-primary bg-primary px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-[#ffd54f] hover:bg-[#ffd54f] hover:text-primary"
                 >
                   ভর্তি হন
                 </Link>

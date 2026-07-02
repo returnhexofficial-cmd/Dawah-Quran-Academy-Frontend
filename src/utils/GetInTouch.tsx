@@ -5,7 +5,7 @@ import Link from 'next/link';
 const GetInTouch = () => {
     return (
         <section className='container lg:mt-20 mb-10 relative z-50'>
-            <section className='bg-[#374868] py-10 px-5 max-w-4xl mx-auto rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-5'>
+            <section className='bg-primary py-10 px-5 max-w-4xl mx-auto rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-5'>
                 <div className='flex items-center gap-5 text-white'>
                     <div className='bg-yellow-400 p-4 rounded-full shadow-lg'>
                         <MdMosque fill="#374868" size={28} />

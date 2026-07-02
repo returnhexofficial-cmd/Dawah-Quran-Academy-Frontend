@@ -111,25 +111,25 @@ const WhyChooseUs = () => {
       <div className="">
         <div>
           <h2 className="text-3xl lg:text-4xl xl:text-5xl duration-200 text-darker font-bold mb-6  lg:mb-10">
-            <span className="text-[#374868]">আমরাই</span> কেন?
+            <span className="text-primary">আমরাই</span> কেন?
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-5 lg:grid-cols-3 lg:gap-x-3">
-          <div className="card relative overflow-hidden flex flex-col gap-y-12 border group hover:bg-[#ffd54f] transition-all duration-500 ease-in-out border-[#374868] rounded-2xl p-5 md:p-7 lg:p-10">
+          <div className="card relative overflow-hidden flex flex-col gap-y-12 border group hover:bg-[#ffd54f] transition-all duration-500 ease-in-out border-primary rounded-2xl p-5 md:p-7 lg:p-10">
             <Image
               src={bgCard}
               alt="bg"
               className=" absolute -bottom-20 -right-10 opacity-20 w-[300px]"
             />
             <div className="flex justify-between items-center">
-              <div className="bg-[#374868] w-[60px] h-[60px] xl:w-[80px] xl:h-[80px] text-white group-hover:text-[#374868] transition-all duration-500 ease-in-out rounded-full relative overflow-hidden flex justify-center items-center">
+              <div className="bg-primary w-[60px] h-[60px] xl:w-[80px] xl:h-[80px] text-white group-hover:text-primary transition-all duration-500 ease-in-out rounded-full relative overflow-hidden flex justify-center items-center">
                 <FaChalkboardTeacher size={30} className=" relative z-20" />
                 <div className=" absolute group-hover:h-full group-hover:w-full transition-all duration-500 ease-in-out h-0 rounded-full w-0 z-10 bg-white"></div>
               </div>
               <h3 className="text-5xl text-[#7e7e7e]">০১</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <h4 className="font-semibold text-lg transition-all duration-500 ease-in-out hover:text-[#374868] lg:text-2xl">
+              <h4 className="font-semibold text-lg transition-all duration-500 ease-in-out hover:text-primary lg:text-2xl">
                 অভিজ্ঞ শিক্ষকসমূহ
               </h4>
               <p className=" text-sm md:text-base text-gray-500">
@@ -139,21 +139,21 @@ const WhyChooseUs = () => {
               </p>
             </div>
           </div>
-          <div className="card relative overflow-hidden flex flex-col gap-y-12 border group hover:bg-[#ffd54f] transition-all duration-500 ease-in-out border-[#374868] rounded-2xl p-5 md:p-7 lg:p-10">
+          <div className="card relative overflow-hidden flex flex-col gap-y-12 border group hover:bg-[#ffd54f] transition-all duration-500 ease-in-out border-primary rounded-2xl p-5 md:p-7 lg:p-10">
             <Image
               src={bgCard}
               alt="bg"
               className=" absolute -bottom-20 -right-10 opacity-20 w-[300px]"
             />
             <div className="flex justify-between items-center">
-              <div className="bg-[#374868] w-[60px] h-[60px] xl:w-[80px] xl:h-[80px] text-white group-hover:text-[#374868] transition-all duration-500 ease-in-out rounded-full relative overflow-hidden flex justify-center items-center">
+              <div className="bg-primary w-[60px] h-[60px] xl:w-[80px] xl:h-[80px] text-white group-hover:text-primary transition-all duration-500 ease-in-out rounded-full relative overflow-hidden flex justify-center items-center">
                 <FaWifi size={30} className=" relative z-20" />
                 <div className=" absolute group-hover:h-full group-hover:w-full transition-all duration-500 ease-in-out h-0 rounded-full w-0 z-10 bg-white"></div>
               </div>
               <h3 className="text-5xl text-[#7e7e7e]">০২</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <h4 className="font-semibold text-lg transition-all duration-500 ease-in-out hover:text-[#374868] lg:text-2xl">
+              <h4 className="font-semibold text-lg transition-all duration-500 ease-in-out hover:text-primary lg:text-2xl">
                 ঘরে বসে শিখার সুযোগ
               </h4>
               <p className=" text-sm md:text-base text-gray-500">
@@ -163,21 +163,21 @@ const WhyChooseUs = () => {
               </p>
             </div>
           </div>
-          <div className="card relative overflow-hidden flex flex-col gap-y-12 border group hover:bg-[#ffd54f] transition-all duration-500 ease-in-out border-[#374868] rounded-2xl p-5 md:p-7 lg:p-10">
+          <div className="card relative overflow-hidden flex flex-col gap-y-12 border group hover:bg-[#ffd54f] transition-all duration-500 ease-in-out border-primary rounded-2xl p-5 md:p-7 lg:p-10">
             <Image
               src={bgCard}
               alt="bg"
               className=" absolute -bottom-20 -right-10 opacity-20 w-[300px]"
             />
             <div className="flex justify-between items-center">
-              <div className="bg-[#374868] w-[60px] h-[60px] xl:w-[80px] xl:h-[80px] text-white group-hover:text-[#374868] transition-all duration-500 ease-in-out rounded-full relative overflow-hidden flex justify-center items-center">
+              <div className="bg-primary w-[60px] h-[60px] xl:w-[80px] xl:h-[80px] text-white group-hover:text-primary transition-all duration-500 ease-in-out rounded-full relative overflow-hidden flex justify-center items-center">
                 <PiPersonSimpleHikeBold size={30} className=" relative z-20" />
                 <div className=" absolute group-hover:h-full group-hover:w-full transition-all duration-500 ease-in-out h-0 rounded-full w-0 z-10 bg-white"></div>
               </div>
               <h3 className="text-5xl text-[#7e7e7e]">০৩</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <h4 className="font-semibold text-lg transition-all duration-500 ease-in-out hover:text-[#374868] lg:text-2xl">
+              <h4 className="font-semibold text-lg transition-all duration-500 ease-in-out hover:text-primary lg:text-2xl">
                 সকল বয়সের জন্যেই উপযোগী
               </h4>
               <p className=" text-sm md:text-base text-gray-500">

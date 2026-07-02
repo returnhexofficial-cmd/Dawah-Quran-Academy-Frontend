@@ -117,11 +117,11 @@ const AdmissionProcess = () => {
         <div>
           <div>
             <h2 className="text-3xl lg:text-4xl xl:text-5xl duration-200 text-darker font-bold mb-6  lg:mb-10">
-              <span className="text-[#374868]">এডমিশন</span> প্রক্রিয়া
+              <span className="text-primary">এডমিশন</span> প্রক্রিয়া
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-5 gap-5">
-            <div className="bg-[#374868] hover:bg-[#ffd54f] lg:col-span-2 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-[#374868] text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
+            <div className="bg-primary hover:bg-[#ffd54f] lg:col-span-2 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-primary text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
               <Image src={bgImg} alt="bg-img" className=" absolute " />
               <div className="w-20 h-20  relative flex justify-center items-center">
                 <Image src={cardImg} alt="bg" className="" />
@@ -135,7 +135,7 @@ const AdmissionProcess = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-[#374868] hover:bg-[#ffd54f] lg:col-span-2 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-[#374868] text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
+            <div className="bg-primary hover:bg-[#ffd54f] lg:col-span-2 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-primary text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
               <Image src={bgImg} alt="bg-img" className=" absolute " />
               <div className="w-20 h-20  relative flex justify-center items-center">
                 <Image src={cardImg} alt="bg" className="" />
@@ -149,7 +149,7 @@ const AdmissionProcess = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-[#374868] hover:bg-[#ffd54f] lg:col-span-2 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-[#374868] text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
+            <div className="bg-primary hover:bg-[#ffd54f] lg:col-span-2 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-primary text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
               <Image src={bgImg} alt="bg-img" className=" absolute " />
               <div className="w-20 h-20  relative flex justify-center items-center">
                 <Image src={cardImg} alt="bg" className="" />
@@ -163,7 +163,7 @@ const AdmissionProcess = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-[#374868] hover:bg-[#ffd54f] lg:col-span-3 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-[#374868] text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
+            <div className="bg-primary hover:bg-[#ffd54f] lg:col-span-3 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-primary text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
               <Image src={bgImg} alt="bg-img" className=" absolute " />
               <div className="w-20 h-20  relative flex justify-center items-center">
                 <Image src={cardImg} alt="bg" className="" />
@@ -177,7 +177,7 @@ const AdmissionProcess = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-[#374868] hover:bg-[#ffd54f] md:col-span-2 lg:col-span-3 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-[#374868] text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
+            <div className="bg-primary hover:bg-[#ffd54f] md:col-span-2 lg:col-span-3 xl:col-span-1 duration-300 transition-all ease-in-out hover:text-primary text-[#fff] relative p-10 rounded-2xl flex flex-col justify-center items-center gap-4">
               <Image src={bgImg} alt="bg-img" className=" absolute " />
               <div className="w-20 h-20  relative flex justify-center items-center">
                 <Image src={cardImg} alt="bg" className="" />

@@ -155,7 +155,7 @@ const Footer = () => {
             <Link
               href="https://www.returnhex.com/"
               target="_blank"
-              className="font-medium text-[#374868] transition-colors duration-300 hover:underline"
+              className="font-medium text-primary transition-colors duration-300 hover:underline"
             >
               Return Hex
             </Link>

@@ -142,7 +142,7 @@ const ManageBooks = () => {
       <div className="sm:flex justify-between items-center mt-10">
         <DashboardTitle blackText="Manage" greenText="Books" />
         <button
-          className="bg-[#374868] hover:bg-[#08255c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
+          className="bg-primary hover:bg-[#08255c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
           onClick={() => setIsBookModalOpen(true)}
         >
           <AiOutlinePlus /> Add Book
@@ -174,7 +174,7 @@ const ManageBooks = () => {
               <input
                 type="text"
                 {...register("title", { required: "Book title is required" })}
-                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] ${
+                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary ${
                   errors.title && "border border-red-500"
                 }`}
               />
@@ -195,7 +195,7 @@ const ManageBooks = () => {
                 <div className="mt-2">
                   <label
                     htmlFor="cover-upload"
-                    className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-dark/40 rounded-lg cursor-pointer hover:border-[#374868] hover:bg-gray-50 transition-colors"
+                    className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-dark/40 rounded-lg cursor-pointer hover:border-primary hover:bg-gray-50 transition-colors"
                   >
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       <BsImage className="w-8 h-8 mb-2 text-gray-500" />
@@ -255,7 +255,7 @@ const ManageBooks = () => {
                   },
                 })}
                 placeholder="বইয়ের ড্রাইভ লিংক"
-                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] ${
+                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary ${
                   errors.url && "border border-red-500"
                 }`}
               />
@@ -273,7 +273,7 @@ const ManageBooks = () => {
                 type="text"
                 {...register("author")}
                 placeholder="বইয়ের লেখক/ প্রকাশনীর নাম"
-                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] ${
+                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary ${
                   errors.author && "border border-red-500"
                 }`}
               />
@@ -286,7 +286,7 @@ const ManageBooks = () => {
                 {...register("description")}
                 placeholder="বইয়ের বর্ণনা"
                 rows={3}
-                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-[#374868] resize-vertical ${
+                className={`w-full border text-black bg-white border-dark/40 p-2 rounded-md focus:outline-none focus:border-primary resize-vertical ${
                   errors.description && "border border-red-500"
                 }`}
               />
@@ -297,7 +297,7 @@ const ManageBooks = () => {
               className={`text-center px-3 md:px-5 py-1 md:py-3 duration-300 rounded-lg text-white cursor-pointer ${
                 isSubmitting
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-[#374868] hover:bg-[#08255c]"
+                  : "bg-primary hover:bg-[#08255c]"
               }`}
               type="submit"
               value={isSubmitting ? "Adding Book..." : "Add Book"}

@@ -53,7 +53,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-[#374868] via-[#374868] to-teal-600 flex flex-col md:flex-row items-center justify-center overflow-y-hidden">
+    <div className="h-screen bg-gradient-to-br from-primary via-primary to-teal-600 flex flex-col md:flex-row items-center justify-center overflow-y-hidden">
       {/* Left Panel - Auth Sidebar */}
       <AuthSidebar />
 
@@ -66,7 +66,7 @@ export default function SignupPage() {
 
         {/* Mobile Logo */}
         <div className="flex md:hidden items-center gap-3 z-10 transform hover:scale-105 transition-transform duration-300">
-          <div className="w-12 h-12 bg-[#374868] bg-opacity-10 rounded-full flex items-center justify-center">
+          <div className="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
             <Image className="w-8 h-8" src={logo} alt="Logo" />
           </div>
           <h1 className="text-darker font-bold text-2xl">
@@ -97,11 +97,11 @@ export default function SignupPage() {
               <input
                 type="text"
                 {...register("name", { required: "Name is required" })}
-                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-[#374868] transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
+                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-primary transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
                 placeholder="Enter your full name"
                 disabled={isLoading}
               />
-              <MdPerson className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#374868] transition-colors duration-300" />
+              <MdPerson className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors duration-300" />
             </div>
             {errors.name && (
               <p className="text-red-500 text-sm mt-2 flex items-center">
@@ -124,7 +124,7 @@ export default function SignupPage() {
                 placeholder="Enter your email address"
                 disabled={isLoading}
               />
-              <MdEmail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#374868] transition-colors duration-300" />
+              <MdEmail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors duration-300" />
             </div>
             {errors.email && (
               <p className="text-red-500 text-sm mt-2 flex items-center">
@@ -149,11 +149,11 @@ export default function SignupPage() {
                     message: "Password must be at least 6 characters",
                   },
                 })}
-                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-[#374868] transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
+                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-primary transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
                 placeholder="Create a strong password"
                 disabled={isLoading}
               />
-              <MdLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#374868] transition-colors duration-300" />
+              <MdLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors duration-300" />
             </div>
             {errors.password && (
               <p className="text-red-500 text-sm mt-2 flex items-center">
@@ -170,7 +170,7 @@ export default function SignupPage() {
             className={`w-full py-4 rounded-xl font-semibold text-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group ${
               isLoading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-[#374868] to-[#374868] hover:from-[#374868] hover:to-[#374868] text-white hover:shadow-xl transform hover:-translate-y-1"
+                : "bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary text-white hover:shadow-xl transform hover:-translate-y-1"
             }`}
           >
             {isLoading ? (
@@ -187,7 +187,7 @@ export default function SignupPage() {
           </button>
           {/* Continue without Login Link */}
           <Link className="flex justify-center mt-8" href="/">
-            <span className="text-[#374868] font-semibold text-sm cursor-pointer">
+            <span className="text-primary font-semibold text-sm cursor-pointer">
               Continue without Login
             </span>
           </Link>
@@ -198,9 +198,9 @@ export default function SignupPage() {
           <p className="text-sm text-darker text-center">
             Already have an account?{" "}
             <Link href="/login" className="group">
-              <span className="text-[#374868] font-bold hover:text-[#374868] transition-colors duration-300 relative">
+              <span className="text-primary font-bold hover:text-primary transition-colors duration-300 relative">
                 Sign In
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#374868] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
               </span>
             </Link>
           </p>

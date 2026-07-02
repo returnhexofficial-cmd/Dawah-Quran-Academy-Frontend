@@ -61,7 +61,7 @@ const BookBox = ({ book, refetch }: IBookBox) => {
           {book?.description || "No Description"}
         </p>
       </div>
-      <div className="absolute bottom-3 right-3 flex gap-3">
+      <div className="absolute bottom-2 right-2 flex gap-3">
         <Tooltip
           text="Delete"
           styles={{

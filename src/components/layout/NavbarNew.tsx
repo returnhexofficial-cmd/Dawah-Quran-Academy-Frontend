@@ -224,14 +224,14 @@ export default function NavbarNew() {
 
         {/* ── Main Navbar Row ── */}
         <div className="relative overflow-hidden bg-white">
-          <div className=" absolute w-[20%] bg-[#374868]  h-full">
+          <div className=" absolute w-[20%] bg-primary  h-full">
 
           </div>
           <div className="max-w-[1400px] mx-auto flex items-stretch justify-between">
             {/* Logo block — angled blue panel like reference */}
             <Link href="/" className="relative flex items-center">
               <div className="relative pl-6 pr-16 py-5 flex items-center gap-3 ">
-                <div className=" z-[5] absolute w-[100%] clip-angled h-full bg-[#374868]">
+                <div className=" z-[5] absolute w-[100%] clip-angled h-full bg-primary">
                 </div>
                 <Image
                   src={logo}

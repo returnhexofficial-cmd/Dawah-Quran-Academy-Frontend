@@ -71,7 +71,7 @@ const ScrollToTop = () => {
       </svg>
 
 
-      <span className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#374868] text-white transition-transform duration-300 hover:scale-110">
+      <span className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white transition-transform duration-300 hover:scale-110">
         <LuArrowUp size={18} />
       </span>
     </button>

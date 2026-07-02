@@ -37,11 +37,11 @@ const Courses = () => {
 
       <section className="py-20 px-4" style={{ background: "#f0f3f8" }}>
         <div className="max-w-5xl mx-auto">
-          <p className="text-center text-xl text-[#374868] font-semibold tracking-widest uppercase mb-3">
+          <p className="text-center text-xl text-primary font-semibold tracking-widest uppercase mb-3">
             আল-হাদিস
           </p>
 
-          <div className="relative rounded-3xl bg-[#374868] overflow-hidden shadow-2xl">
+          <div className="relative rounded-3xl bg-primary overflow-hidden shadow-2xl">
             <div
               className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5"
               aria-hidden="true"
@@ -139,7 +139,7 @@ const Courses = () => {
                 className="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl group flex flex-col"
               >
                 {/* Image */}
-                <div className="relative flex h-64 items-center justify-center overflow-hidden bg-[#374868]">
+                <div className="relative flex h-64 items-center justify-center overflow-hidden bg-primary">
                   <div className="transition-transform duration-300 group-hover:scale-110">
                     <img
                       src={course.img}
@@ -148,13 +148,13 @@ const Courses = () => {
                     />
                   </div>
 
-                  <span className="absolute left-3 top-3 rounded-full bg-[#ffd54f] px-3 py-1 text-xs font-semibold text-[#374868]">
+                  <span className="absolute left-3 top-3 rounded-full bg-[#ffd54f] px-3 py-1 text-xs font-semibold text-primary">
                     {course.method}
                   </span>
                 </div>
 
                 {/* Meta */}
-                <div className="flex items-center justify-between border-b border-gray-100 px-5 py-3 text-xs font-medium text-[#374868]">
+                <div className="flex items-center justify-between border-b border-gray-100 px-5 py-3 text-xs font-medium text-primary">
                   {/* <span className="flex items-center gap-1">
           <HiOutlineUserGroup className="h-4 w-4" />
           ২৫০ জন ভর্তি
@@ -175,7 +175,7 @@ const Courses = () => {
                 <div className="flex flex-grow flex-col p-5">
                   <p className="mb-1 text-xs text-gray-400">{course.method}</p>
 
-                  <h3 className="mb-4 text-base font-bold leading-snug text-[#374868]">
+                  <h3 className="mb-4 text-base font-bold leading-snug text-primary">
                     {course.name}
                   </h3>
 
@@ -203,7 +203,7 @@ const Courses = () => {
                     {course.details.length > 2 && (
                       <button
                         onClick={() => toggleDetails(course._id)}
-                        className="mt-3 text-sm font-semibold text-[#374868] hover:text-[#ffd54f]"
+                        className="mt-3 text-sm font-semibold text-primary hover:text-[#ffd54f]"
                       >
                         {showAll[course._id]
                           ? "কম দেখান"
@@ -215,14 +215,14 @@ const Courses = () => {
                   <div className="flex-grow" />
 
                   <div className="mt-4 flex items-center justify-between border-t border-gray-100 pt-4">
-                    <span className="text-lg font-bold text-[#374868]">
+                    <span className="text-lg font-bold text-primary">
                       ৳{course.fee}
                     </span>
 
                     <Link
                       href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
                       target="_blank"
-                      className="rounded-xl border-2 border-[#374868] bg-[#374868] px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-[#ffd54f] hover:bg-[#ffd54f] hover:text-[#374868]"
+                      className="rounded-xl border-2 border-primary bg-primary px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-[#ffd54f] hover:bg-[#ffd54f] hover:text-primary"
                     >
                       ভর্তি হন
                     </Link>

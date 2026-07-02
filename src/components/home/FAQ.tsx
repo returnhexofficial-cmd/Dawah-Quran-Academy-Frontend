@@ -49,7 +49,7 @@ const FAQ = () => {
             <p className="flex items-center gap-2 text-[16px] uppercase tracking-[2px] text-gray-400 mb-4">
               <span>🕌</span> সাধারণ জিজ্ঞাসা
             </p>
-            <h2 className="text-xl lg:text-3xl font-extrabold text-[#374868] leading-snug">
+            <h2 className="text-xl lg:text-3xl font-extrabold text-primary leading-snug">
               আমাদের প্রোগ্রাম সম্পর্কে প্রায়শই জিজ্ঞাসিত প্রশ্নসমূহ
             </h2>
             <p className="mt-5 text-sm text-gray-500 leading-7">
@@ -71,10 +71,10 @@ const FAQ = () => {
                     onClick={() => toggle(i)}
                     className="w-full flex items-center lg:gap-4 px-6 py-5 text-left"
                   >
-                    <span className="text-[20px] font-bold text-[#374868] min-w-[24px]">
+                    <span className="text-[20px] font-bold text-primary min-w-[24px]">
                       {toBanglaNum(i + 1)}.
                     </span>
-                    <span className="flex-1 text-[16px] lg:text-[20px] font-semibold text-[#374868] leading-snug">
+                    <span className="flex-1 text-[16px] lg:text-[20px] font-semibold text-primary leading-snug">
                       {faq.question}
                     </span>
                     <span

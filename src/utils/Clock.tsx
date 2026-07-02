@@ -151,7 +151,7 @@ function PrayerWidget() {
     <>
       <button
         onClick={handleOpen}
-        className="flex items-center gap-2 bg-[#ffd54f] hover:bg-[#374868] text-white duration-300 font-semibold text-sm px-5 py-3 rounded-t-xl transition-colors"
+        className="flex items-center gap-2 bg-[#ffd54f] hover:bg-primary text-white duration-300 font-semibold text-sm px-5 py-3 rounded-t-xl transition-colors"
       >
         <LuClock size={16} />
         নামাজের সময়
