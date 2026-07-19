@@ -80,7 +80,7 @@ const FAQ = () => {
                     <span
                       className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                         isOpen
-                          ? "bg-[#1e2a4a] text-white"
+                          ? "bg-primary text-white"
                           : "bg-gray-100 text-gray-500"
                       }`}
                     >

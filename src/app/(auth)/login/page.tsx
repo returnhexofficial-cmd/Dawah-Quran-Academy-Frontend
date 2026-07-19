@@ -77,7 +77,7 @@ export default function LoginPage() {
             <Image className="w-8 h-8" src={logo} alt="Logo" />
           </div>
           <h1 className="text-darker font-bold text-2xl">
-            Online Quran Academy
+            Dawah Quran Academy
           </h1>
         </div>
 

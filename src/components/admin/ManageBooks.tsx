@@ -91,49 +91,53 @@ const ManageBooks = () => {
     }
   };
 
-  const onBookDataSubmit: SubmitHandler<IFormInput> = async (data) => {
-    // Validate files
-    if (!coverFile) {
-      toast.error("Please upload a book cover image");
-      return;
+ const onBookDataSubmit: SubmitHandler<IFormInput> = async (data) => {
+  if (!coverFile) {
+    toast.error("Please upload a book cover image");
+    return;
+  }
+
+  setIsSubmitting(true);
+
+  try {
+    const formData = new FormData();
+
+    formData.append("title", data.title);
+    formData.append("author", data.author || "");
+    formData.append("description", data.description || "");
+    formData.append("url", data.url);
+
+    // Backend upload.single("cover")
+    formData.append("cover", coverFile);
+
+    const res = await axiosSecure.post("/books", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    if (res.data.statusCode === 201) {
+      Swal.fire({
+        title: "Book added successfully",
+        icon: "success",
+        timer: 1500,
+      });
+
+      setIsBookModalOpen(false);
+      resetForm();
+      booksRefetch();
     }
-    setIsSubmitting(true);
+  } catch (error: any) {
+    console.error(error);
 
-    try {
-      const uploadedImageUrl = await uploadImageToImgBB(coverFile);
-
-      const bookData = {
-        title: data.title,
-        author: data.author || "",
-        description: data.description || "",
-        url: data.url,
-        cover: uploadedImageUrl,
-      };
-
-      const res = await axiosSecure.post("/books", bookData);
-      if (res.data.statusCode === 201) {
-        Swal.fire({
-          title: "Book added successfully",
-          icon: "success",
-          timer: 1500,
-        });
-        setIsBookModalOpen(false);
-        resetForm();
-        booksRefetch();
-      }
-    } catch (error: any) {
-      console.error("Error adding book:", error);
-      if (error.message.includes("upload")) {
-        toast.error("Failed to upload image. Please try again.");
-      } else {
-        toast.error(
-          error.response?.data?.message || error.message || "Could not add book"
-        );
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    toast.error(
+      error.response?.data?.message ||
+        "Could not add book"
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   if (booksLoading) return <LoadingSpinner />;
 
@@ -142,7 +146,7 @@ const ManageBooks = () => {
       <div className="sm:flex justify-between items-center mt-10">
         <DashboardTitle blackText="Manage" greenText="Books" />
         <button
-          className="bg-primary hover:bg-[#08255c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
+          className="bg-primary hover:bg-lightduration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
           onClick={() => setIsBookModalOpen(true)}
         >
           <AiOutlinePlus /> Add Book
@@ -185,7 +189,6 @@ const ManageBooks = () => {
               )}
             </div>
 
-            {/* Book Cover Upload */}
             <div className="w-full mb-3">
               <label className="text-dark text-sm">
                 Book Cover <span className="text-red-500">*</span>
@@ -240,7 +243,6 @@ const ManageBooks = () => {
               )}
             </div>
 
-            {/* Book Url */}
             <div className="w-full mb-3">
               <label className="text-dark text-sm">
                 Book URL <span className="text-red-500">*</span>
@@ -265,8 +267,6 @@ const ManageBooks = () => {
                 </p>
               )}
             </div>
-
-            {/* Book Author */}
             <div className="w-full mb-3">
               <label className="text-dark text-sm">Book Author</label>
               <input
@@ -279,7 +279,6 @@ const ManageBooks = () => {
               />
             </div>
 
-            {/* Book Description */}
             <div className="w-full mb-3">
               <label className="text-dark text-sm">Book Description</label>
               <textarea
@@ -292,12 +291,11 @@ const ManageBooks = () => {
               />
             </div>
 
-            {/* Submit */}
             <input
               className={`text-center px-3 md:px-5 py-1 md:py-3 duration-300 rounded-lg text-white cursor-pointer ${
                 isSubmitting
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-primary hover:bg-[#08255c]"
+                  : "bg-primary hover:bg-green-800"
               }`}
               type="submit"
               value={isSubmitting ? "Adding Book..." : "Add Book"}

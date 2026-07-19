@@ -64,7 +64,7 @@ export default function StudentSidebar({
                     className="w-12 rounded cursor-pointer"
                   />
                 </Link>
-                <p className="font-semibold text-white">Online Quran Academy</p>
+                <p className="font-semibold text-white">Dawah Quran Academy</p>
               </div>
               {/* <span className="text-lg font-medium">DevKon School</span> */}
               <button

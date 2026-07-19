@@ -1,9 +1,15 @@
 export type TTeacher = {
   _id: string;
   name: string;
+  email: string;
+  number: string;
   education: string;
-  subject: string;
   gender: "male" | "female";
-  createdAt: string;
-  updatedAt: string;
+
+  subject: string[]; 
+
+  profileImage?: string; 
+
+  createdAt?: string;
+  updatedAt?: string;
 };

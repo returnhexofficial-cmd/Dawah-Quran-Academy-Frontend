@@ -1,7 +1,7 @@
 import { FaGlobe, FaHome } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import breadcrumb from "@/assets/course/bedcrum-bg.jpg";
+import breadcrumb from "@/assets/Home-Hero/bg-new.jpg";
 
 type TBreadcrumbs = {
   title: string;
@@ -9,7 +9,7 @@ type TBreadcrumbs = {
 
 const Breadcrumbs = ({ title }: TBreadcrumbs) => {
   return (
-    <section className="relative overflow-hidden pt-28 md:pt-36 lg:pt-48 pb-12">
+    <section className="relative overflow-hidden pt-28 md:pt-36 pb-12">
       {/* Background */}
       <Image
         src={breadcrumb}
@@ -33,7 +33,7 @@ const Breadcrumbs = ({ title }: TBreadcrumbs) => {
         </div>
 
         <div className="mt-12 flex justify-center md:justify-start">
-          <div className="inline-flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md px-6 py-4 shadow-2xl">
+          <div className="inline-flex items-center gap-3 rounded-xl border border-white/20 bg-primary backdrop-blur-md px-6 py-4 shadow-2xl">
             <Link
               href="/"
               className="flex items-center gap-2 text-white hover:text-yellow-400 transition"

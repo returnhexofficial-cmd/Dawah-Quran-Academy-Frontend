@@ -175,7 +175,7 @@ function PrayerWidget() {
           >
             <button
               onClick={handleClose}
-              className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 text-gray-500 hover:text-[#1e2a4a] transition-colors duration-200"
+              className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 text-gray-500 hover:text-primary transition-colors duration-200"
             >
               <LuX size={18} />
             </button>
@@ -191,7 +191,7 @@ function PrayerWidget() {
                     🕌
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-[#1e2a4a]">
+                    <p className="text-sm font-bold text-primary">
                       নামাজের সময়সূচি
                     </p>
                     <p className="text-xs text-gray-400">
@@ -222,7 +222,7 @@ function PrayerWidget() {
                           className={`text-sm font-semibold px-3 py-1 rounded-full ${
                             isActive
                               ? "bg-amber-50 text-amber-500"
-                              : "bg-slate-50 text-[#1e2a4a]"
+                              : "bg-slate-50 text-primary"
                           }`}
                         >
                           {toAmPm(data.timings[key])}

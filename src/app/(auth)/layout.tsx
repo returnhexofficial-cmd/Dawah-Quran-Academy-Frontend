@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "../providers/AuthContext";
 import QueryProvider from "../providers/QueryProvider";
 export const metadata: Metadata = {
-  title: "Online Quran Academy",
+  title: "Dawah Quran Academy",
   description:
     "Learn Quran online with expert tutors, interactive lessons, and personalized guidance.",
 };

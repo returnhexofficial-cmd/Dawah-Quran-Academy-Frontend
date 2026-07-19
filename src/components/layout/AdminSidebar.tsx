@@ -92,7 +92,7 @@ export default function AdminSidebar({
                     className="w-12 rounded cursor-pointer"
                   />
                 </Link>
-                <p className="font-semibold text-white">Online Quran Academy</p>
+                <p className="font-semibold text-white">Dawah Quran Academy</p>
               </div>
               {/* <span className="text-lg font-medium">DevKon School</span> */}
               <button
@@ -132,19 +132,19 @@ export default function AdminSidebar({
                 <Link
                   key={idx}
                   href={href}
-                  className={`flex items-center w-full transition-all duration-200 rounded-md p-2 hover:bg-gray-900 relative group ${
+                  className={`flex items-center w-full transition-all duration-200 rounded-md p-2 hover:bg-light relative group ${
                     isOpen ? "justify-between" : "justify-center"
-                  } ${isActive ? "bg-gray-800 border-l-4 border-white" : ""}`}
+                  } ${isActive ? "bg-light border-l-4 border-white" : ""}`}
                 >
                   {isOpen ? (
                     <div className="flex items-center justify-center gap-2">
                       <Icon
                         size={20}
-                        className={`${isActive ? "text-light" : "text-white"}`}
+                        className={`${isActive ? "text-white" : "text-white"}`}
                       />
                       <span
                         className={`font-medium text-sm lg:text-sm xl:text-md ${
-                          isActive ? "text-light" : "text-white"
+                          isActive ? "text-white" : "text-white"
                         }`}
                       >
                         {label}
@@ -170,7 +170,7 @@ export default function AdminSidebar({
           {/*  Go to Home Button */}
           <Link
             href="/"
-            className={`flex items-center w-full transition-all duration-200 mt-3 rounded-md p-2 bg-[#445f91] hover:bg-[#08255c] text-white relative group ${
+            className={`flex items-center w-full transition-all duration-200 mt-3 rounded-md p-2 bg-light hover:bg-lighttext-white relative group ${
               isOpen ? "justify-between" : "justify-center"
             }`}
           >
@@ -178,14 +178,14 @@ export default function AdminSidebar({
               <div className="flex items-center justify-center gap-2">
                 <FaHome size={20} className="text-white" />
                 <span className="font-medium text-sm lg:text-sm xl:text-md text-white">
-                  Go to Home
+                  Go to Home 
                 </span>
               </div>
             ) : (
               <div className="relative">
                 <FaHome size={22} className="text-white" />
                 <span className="absolute top-1/2 left-full ml-2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gray-100 text-black text-sm rounded px-2 py-1 whitespace-nowrap">
-                  Go to Home
+                  Go to Home 
                 </span>
               </div>
             )}
