@@ -27,14 +27,14 @@ const StudentStatus = () => {
         <p className="text-center text-[11px] uppercase tracking-[3px] text-[#8a7a60] mb-2">
           আমাদের সম্পর্কে
         </p>
-        <h2 className="text-center text-3xl font-bold text-[#1e2a4a] mb-12">
+        <h2 className="text-center text-3xl font-bold text-primary mb-12">
           আলহামদুলিল্লাহ!
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
           {/* Left dark panel */}
-          <div className="bg-[#1e2a4a] rounded-3xl p-10 flex flex-col justify-between min-h-[340px]">
+          <div className="bg-primary rounded-3xl p-10 flex flex-col justify-between min-h-[340px]">
             <div>
               <p className="text-[10px] uppercase tracking-[3px] text-[#6a85aa] mb-3">
                 কুরআন শিক্ষা একাডেমি
@@ -84,7 +84,7 @@ const StudentStatus = () => {
             {/* Feature card 2 */}
             <div className="bg-white rounded-2xl p-6 border border-black/5 flex flex-col gap-4 flex-1">
               <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-xl bg-[#e8edf7] text-[#1e2a4a] flex items-center justify-center text-xl shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#e8edf7] text-primary flex items-center justify-center text-xl shrink-0">
                   <PiStudentFill />
                 </div>
                 <h4 className="font-semibold text-[#1a2340] text-[15px]">
@@ -102,7 +102,7 @@ const StudentStatus = () => {
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="bg-[#1e2a4a] rounded-2xl py-5 px-4 text-center"
+                  className="bg-primary rounded-2xl py-5 px-4 text-center"
                 >
                   <p className="text-2xl font-bold text-white mb-1">{s.number}</p>
                   <p className="text-[11px] text-[#fff] tracking-wide">{s.label}</p>

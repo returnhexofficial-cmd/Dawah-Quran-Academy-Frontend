@@ -130,7 +130,7 @@ const Footer = () => {
             <Link
               href="https://www.facebook.com/onlinequranacademy24"
               target="_blank"
-              className="rounded-full border border-white/20 p-3 text-light transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
+              className="rounded-full border border-white p-3 text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
             >
               <BsFacebook size={22} />
             </Link>
@@ -138,7 +138,7 @@ const Footer = () => {
             <Link
               href="https://wa.me/8801XXXXXXXXX"
               target="_blank"
-              className="rounded-full border border-white/20 p-3 text-light transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
+              className="rounded-full border border-white p-3 text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
             >
               <BsWhatsapp size={22} />
             </Link>
@@ -155,7 +155,7 @@ const Footer = () => {
             <Link
               href="https://www.returnhex.com/"
               target="_blank"
-              className="font-medium text-primary transition-colors duration-300 hover:underline"
+              className="font-medium text-white transition-colors duration-300 hover:underline"
             >
               Return Hex
             </Link>

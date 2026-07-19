@@ -9,7 +9,7 @@ import NavbarNew from "@/components/layout/NavbarNew";
 import ScrollToTop from "@/utils/ScrollButton";
 
 export const metadata: Metadata = {
-  title: "Online Quran Academy",
+  title: "Dawah Quran Academy",
   description:
     "Learn Quran online with expert tutors, interactive lessons, and personalized guidance.",
 };

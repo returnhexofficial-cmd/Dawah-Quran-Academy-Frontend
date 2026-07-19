@@ -63,7 +63,7 @@ export default function AuthSidebar() {
           />
         </div>
         <h1 className="text-white font-bold text-2xl lg:text-3xl xl:text-4xl drop-shadow-lg">
-          Online Quran Academy
+          Dawah Quran Academy
         </h1>
       </div>
 

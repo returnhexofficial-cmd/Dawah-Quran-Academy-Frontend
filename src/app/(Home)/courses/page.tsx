@@ -40,7 +40,7 @@ const Courses = () => {
           <p className="text-center text-xl text-primary font-semibold tracking-widest uppercase mb-3">
             আল-হাদিস
           </p>
-
+ 
           <div className="relative rounded-3xl bg-primary overflow-hidden shadow-2xl">
             <div
               className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5"

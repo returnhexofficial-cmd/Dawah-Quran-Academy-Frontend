@@ -18,10 +18,10 @@ import logo from "@/assets/logo-without-bg.png";
 
 const navItems = [
   { name: "হোম", href: "/" },
-  { name: "কোর্সসমূহ", href: "/courses" },
+  { name: "কোর্সসমূহ", href: "/" },  //  /courses
   { name: "বইসমূহ", href: "/books" },
   { name: "শিক্ষকবৃন্দ", href: "/teachers" },
-  { name: "যোগাযোগ", href: "/contact" },
+  { name: "যোগাযোগ", href: "/" },  //  /contact
 ];
 
 export default function NavbarNew() {
@@ -70,7 +70,7 @@ export default function NavbarNew() {
         }`}
       >
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-5 py-4 bg-[#1a2547]">
+        <div className="flex items-center justify-between px-5 py-4 bg-primary">
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
@@ -78,7 +78,7 @@ export default function NavbarNew() {
           >
             <Image src={logo} alt="logo" width={36} height={36} />
             <span className="text-white font-bold text-base">
-              Quran Academy BD
+              Dawah Quran Academy BD
             </span>
           </Link>
           <button
@@ -120,7 +120,7 @@ export default function NavbarNew() {
           {isLoggedIn ? (
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2 min-w-0">
-                <div className="relative h-9 w-9 rounded-full bg-[#1a2547] text-white flex items-center justify-center overflow-hidden flex-shrink-0">
+                <div className="relative h-9 w-9 rounded-full bg-primary text-white flex items-center justify-center overflow-hidden flex-shrink-0">
                   {profile.avatar ? (
                     <Image
                       src={profile.avatar}
@@ -161,7 +161,7 @@ export default function NavbarNew() {
           <Link
             href="/admission"
             onClick={() => setIsOpen(false)}
-            className="flex items-center justify-center w-full py-2.5 bg-[#1a2547] rounded-lg text-white text-sm font-semibold hover:bg-[#0f1f3d] transition-colors"
+            className="flex items-center justify-center w-full py-2.5 bg-primary rounded-lg text-white text-sm font-semibold hover:bg-[#0f1f3d] transition-colors"
           >
             ভর্তি হন
           </Link>
@@ -170,13 +170,13 @@ export default function NavbarNew() {
             <span className="text-xs text-gray-500">Follow Us:</span>
             <a
               href="#"
-              className="w-7 h-7 grid place-items-center rounded-full bg-gray-100 text-[#1a2547] hover:bg-[#c8a951] hover:text-white transition-colors"
+              className="w-7 h-7 grid place-items-center rounded-full bg-gray-100 text-primary hover:bg-[#c8a951] hover:text-white transition-colors"
             >
               <BsFacebook size={12} />
             </a>
             <a
               href="#"
-              className="w-7 h-7 grid place-items-center rounded-full bg-gray-100 text-[#1a2547] hover:bg-[#c8a951] hover:text-white transition-colors"
+              className="w-7 h-7 grid place-items-center rounded-full bg-gray-100 text-primary hover:bg-[#c8a951] hover:text-white transition-colors"
             >
               <BsWhatsapp size={12} />
             </a>
@@ -187,7 +187,7 @@ export default function NavbarNew() {
       {/* ═══════════ MAIN HEADER ═══════════ */}
       <header className="w-full bg-white shadow-sm sticky top-0 z-30">
         {/* ── Top Mini-Bar (dark) ── */}
-        <div className="bg-[#0d152e] text-white text-[13px] hidden md:block">
+        <div className="bg-[#0B240F] text-white text-[13px] hidden md:block">
           <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between h-11">
             {/* Left: contact info */}
             <div className="flex items-center gap-6">
@@ -240,15 +240,18 @@ export default function NavbarNew() {
                   height={48}
                   className="object-contain relative z-10"
                 />
-                <div className="leading-tight relative z-10">
-                  <h1 className="text-white font-bold text-xl md:text-2xl tracking-wide">
-                    Quran
+                <div className="leading-tight relative z-10"> 
+                  <h1 className="text-white font-bold text-lg  md:text-xl tracking-wide">
+                     Dawah 
+                  </h1>
+                  <h1 className="text-white font-bold text-lg md:text-xl tracking-wide">
+                     Quran
                   </h1>
                   <p className="text-[#c8a951] text-[10px] tracking-[0.2em] font-medium uppercase">
-                    Academy BD
+                    Academy
                   </p>
                 </div>
-                <div className=" absolute w-[25%] -bottom-5 rotate-[150deg]  bg-[#283852] h-full clip-angled  -right-5">
+                <div className=" absolute w-[25%] -bottom-5 rotate-[150deg]  bg-[#0B240F] h-full clip-angled  -right-5">
 
                 </div>
               </div>
@@ -276,7 +279,7 @@ export default function NavbarNew() {
                     className={`relative text-[15px] font-medium transition-colors py-2 ${
                       active
                         ? "text-[#c8a951]"
-                        : "text-[#0f1f3d] hover:text-[#c8a951]"
+                        : "text-primary hover:text-[#c8a951]" 
                     }`}
                   >
                     {item.name}
@@ -291,7 +294,7 @@ export default function NavbarNew() {
                 className={`text-[15px] font-medium transition-colors py-2 ${
                   pathname === "/admission"
                     ? "text-[#c8a951]"
-                    : "text-[#0f1f3d] hover:text-[#c8a951]"
+                    : "text-primary hover:text-[#c8a951]"
                 }`}
               >
                 এডমিশন
@@ -307,7 +310,7 @@ export default function NavbarNew() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={goDashboard}
-                    className="relative h-10 w-10 rounded-full overflow-hidden bg-[#1a2547] text-white grid place-items-center"
+                    className="relative h-10 w-10 rounded-full overflow-hidden bg-primary text-white grid place-items-center"
                   >
                     {profile.avatar ? (
                       <Image
@@ -342,7 +345,7 @@ export default function NavbarNew() {
               {/* Primary CTA — Donate-style */}
               <Link
                 href="/admission"
-                className="px-6 h-11 inline-flex items-center justify-center rounded-md bg-[#1a2547] text-white text-sm font-semibold hover:bg-[#0f1f3d] transition-colors shadow-md"
+                className="px-6 h-11 inline-flex items-center justify-center rounded-md bg-primary text-white text-sm font-semibold hover:bg-[#083519] transition-colors shadow-md"
               >
                 ভর্তি হন
               </Link>
@@ -353,7 +356,7 @@ export default function NavbarNew() {
               {isLoggedIn && (
                 <button
                   onClick={goDashboard}
-                  className="relative h-9 w-9 rounded-full overflow-hidden bg-[#1a2547] text-white grid place-items-center"
+                  className="relative h-9 w-9 rounded-full overflow-hidden bg-primary text-white grid place-items-center"
                 >
                   {profile.avatar ? (
                     <Image
@@ -380,7 +383,7 @@ export default function NavbarNew() {
               <button
                 onClick={() => setIsOpen((o) => !o)}
                 aria-label={isOpen ? "close-menu" : "open-menu"}
-                className="w-10 h-10 grid place-items-center rounded-md bg-[#1a2547] text-white"
+                className="w-10 h-10 grid place-items-center rounded-md bg-primary text-white"
               >
                 {isOpen ? <ImCross size={14} /> : <CiMenuFries size={22} />}
               </button>
