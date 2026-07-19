@@ -1,91 +1,161 @@
+
 "use client";
+
 import logo from "@/assets/logo.jpg";
-import mckp from "@/assets/sec-botm-mckp.png";
+import mckp from "@/assets/footer/mosqu1.png";
+
 import Image from "next/image";
 import Link from "next/link";
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
 
+const quickLinks = [
+  { name: "হোম", href: "/" },
+  { name: "কোর্সসমূহ", href: "/courses" },
+  { name: "বইসমূহ", href: "/books" },
+  { name: "শিক্ষকমণ্ডলী", href: "/teachers" },
+  { name: "যোগাযোগ", href: "/contact" },
+];
+
+const resources = [
+  {
+    name: "ভর্তি",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform",
+  },
+  {
+    name: "গোপনীয়তা নীতি",
+    href: "/privacy-policy",
+  },
+  {
+    name: "শর্তাবলী",
+    href: "/terms-condition",
+  },
+  {
+    name: "সাধারণ জিজ্ঞাসা",
+    href: "/faq",
+  },
+];
+
 const Footer = () => {
   return (
-    <footer className="relative bg-darker text-light lg:mt-40">
+    <footer className="relative bg-black text-light font-sans mt-28  lg:mt-96 xl:mt-40">
+      {/* Background Image */}
       <Image
-        className="hidden lg:block md:absolute -top-[142px] right-0"
         src={mckp}
-        alt="Bottom mockup"
+        alt="Mosque Background"
+        className="pointer-events-none absolute bottom-52 left-0 hidden xl:w-[50%] lg:block"
       />
 
-      {/* Top Section */}
-      <section className="container mx-auto flex flex-col lg:flex-row justify-between gap-5 py-5">
+      {/* Main Footer */}
+      <section className="container relative z-10 mx-auto grid grid-cols-1 gap-10 px-5 py-14 md:grid-cols-2 lg:grid-cols-4">
         {/* Logo */}
-        <section className="flex items-center gap-5">
-          <Image
-            className="w-12 md:w-16 h-12 md:h-16 rounded"
-            src={logo}
-            alt="Logo"
-          />
-          <div>
-            <p className="font-bold lg:text-xl lg:mb-1 text-white">
-              Online Quran Academy
-            </p>
-            <p className="text-sm lg:text-base">
-              Learn Quran ONLINE At Your Home
-            </p>
+        <div>
+          <div className="mb-5 flex items-center gap-4">
+            <Image
+              src={logo}
+              alt="Logo"
+              className="h-16 w-16 rounded-md object-cover"
+            />
+
+            <div>
+              <h3 className="text-xl font-bold text-white">
+                অনলাইন কুরআন একাডেমি
+              </h3>
+
+              <p className="text-sm white">
+                ঘরে বসেই অনলাইনে কুরআন শিক্ষা
+              </p>
+            </div>
           </div>
-        </section>
+
+          <p className="leading-7 text-white">
+            অভিজ্ঞ শিক্ষকদের মাধ্যমে শিশু ও প্রাপ্তবয়স্কদের জন্য
+            এক-টু-ওয়ান লাইভ ক্লাস, নমনীয় সময়সূচি এবং ব্যক্তিগত
+            তত্ত্বাবধানে সহীহভাবে কুরআন শিক্ষা প্রদান করাই আমাদের
+            লক্ষ্য।
+          </p>
+        </div>
 
         {/* Quick Links */}
-        <section className="flex lg:justify-center items-center gap-3 md:gap-5">
-          <Link
-            className="text-sm md:text-base hover:underline"
-            href="/courses"
-          >
-            Courses
-          </Link>
-          <Link className="text-sm md:text-base hover:underline" href="/books">
-            Books
-          </Link>
-          <Link
-            className="text-sm md:text-base hover:underline"
-            href="/teachers"
-          >
-            Teachers
-          </Link>
-          <Link
-            className="text-sm md:text-base hover:underline"
-            href="/contact"
-          >
-            Contact
-          </Link>
-          <Link
-            className="text-sm md:text-base hover:underline"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
-            target="_blank"
-          >
-            Admission
-          </Link>
-        </section>
+        <div>
+          <h4 className="mb-5 text-lg font-semibold text-white">
+            গুরুত্বপূর্ণ লিংক
+          </h4>
+
+          <div className="flex flex-col gap-3">
+            {quickLinks.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="w-fit text-white transition-all duration-300 hover:translate-x-1 hover:text-[#ffd54f]"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Resources */}
+        <div>
+          <h4 className="mb-5 text-lg font-semibold text-white">
+            প্রয়োজনীয় তথ্য
+          </h4>
+
+          <div className="flex flex-col gap-3">
+            {resources.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : "_self"}
+                className="w-fit text-white transition-all duration-300 hover:translate-x-1 hover:text-[#ffd54f]"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        </div>
 
         {/* Social */}
-        <section className="flex items-center gap-5">
-          <Link
-            href="https://www.facebook.com/onlinequranacademy24"
-            target="_blank"
-          >
-            <BsFacebook className="cursor-pointer size-6 lg:size-8" />
-          </Link>
-          <BsWhatsapp className="cursor-pointer size-6 lg:size-8" />
-        </section>
+        <div>
+          <h4 className="mb-5 text-lg font-semibold text-white">
+            আমাদের সাথে যুক্ত থাকুন
+          </h4>
+
+          <p className="mb-5 leading-7 text-white">
+            আমাদের সর্বশেষ আপডেট, ঘোষণা এবং ইসলামিক
+            শিক্ষামূলক কনটেন্ট পেতে আমাদের সামাজিক
+            যোগাযোগমাধ্যমে যুক্ত থাকুন।
+          </p>
+
+          <div className="flex gap-5">
+            <Link
+              href="https://www.facebook.com/onlinequranacademy24"
+              target="_blank"
+              className="rounded-full border border-white/20 p-3 text-light transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
+            >
+              <BsFacebook size={22} />
+            </Link>
+
+            <Link
+              href="https://wa.me/8801XXXXXXXXX"
+              target="_blank"
+              className="rounded-full border border-white/20 p-3 text-light transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
+            >
+              <BsWhatsapp size={22} />
+            </Link>
+          </div>
+        </div>
       </section>
 
-      {/* Bottom Section */}
-      <section className="border-t border-light/20 py-2 flex items-center font-serif">
-        <div className="container">
-          <p className="text-center text-xs sm:text-sm md:text-base lg:text-lg">
-            © {new Date().getFullYear()} . All Rights Reserved. Built by{" "}
+      {/* Bottom */}
+      <section className="relative z-10 border-t border-white/10">
+        <div className="container mx-auto px-5 pb-5">
+          <p className="text-center text-sm text-white">
+            © {new Date().getFullYear()} অনলাইন কুরআন একাডেমি। সর্বস্বত্ব
+            সংরক্ষিত। নির্মাণ করেছে{" "}
             <Link
               href="https://www.returnhex.com/"
               target="_blank"
-              className="text-blue-500 cursor-pointer"
+              className="font-medium text-primary transition-colors duration-300 hover:underline"
             >
               Return Hex
             </Link>
@@ -95,4 +165,6 @@ const Footer = () => {
     </footer>
   );
 };
+
 export default Footer;
+

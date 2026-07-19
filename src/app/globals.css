@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 body {
   font-family: "Tiro Bangla", serif;
@@ -12,6 +15,11 @@ body {
   body {
     @apply overflow-x-hidden;
   }
+}
+
+
+@theme {
+    --font-inter: "Inter", sans-serif;
 }
 
 @layer utilities {
@@ -97,4 +105,37 @@ textarea {
 
 .hadith-swiper .swiper-wrapper {
   transition-timing-function: ease-in-out;
+}
+
+.container1{
+  @apply w-[100%] px-[4%] md:px-[4%] lg:px-[5%] xl:px-[8%];
+}
+
+.anim {
+  rotate: -20deg;
+  animation: animX 4s ease-in-out infinite alternate;
+}
+
+@keyframes animX {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(20px);
+  }
+}
+
+.anim2 {
+  animation: animY 4s ease-in-out infinite alternate;
+}
+
+@keyframes animY {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(20px);
+  }
 }

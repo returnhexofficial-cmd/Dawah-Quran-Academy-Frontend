@@ -62,7 +62,7 @@ export default function MyReviews() {
       <div className="sm:flex justify-between items-center mt-10">
         <DashboardTitle blackText="My" greenText="Reviews" />
         <button
-          className="bg-primary hover:bg-dark duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
+          className="bg-primary hover:bg-[#1d3d7c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
           onClick={() => setIsReviewModalOpen(true)}
         >
           <AiOutlinePlus /> Add Review
@@ -90,7 +90,7 @@ export default function MyReviews() {
                   className={`inline-block px-3 py-1 rounded text-xs font-semibold mt-2 ${
                     review.status === "pending"
                       ? "bg-yellow-100 text-yellow-800"
-                      : "bg-green-100 text-green-800"
+                      : "bg-green-100 text-[#395b9b]"
                   }`}
                 >
                   {review.status}
@@ -151,7 +151,7 @@ export default function MyReviews() {
               className={`text-center px-3 md:px-5 py-1 md:py-3 duration-300 rounded-lg text-white cursor-pointer mt-5 flex items-center justify-center gap-2 w-auto ${
                 isSubmittingReview
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-primary hover:bg-primary/90"
+                  : "bg-primary hover:bg-[#1d3d7c]"
               }`}
             >
               {isSubmittingReview ? (

@@ -13,7 +13,7 @@ import { useUser } from "@/app/providers/UserContext";
 import logo from "@/assets/logo-without-bg.png";
 import { useRouter, usePathname } from "next/navigation";
 import { LuLogOut } from "react-icons/lu";
-import { toast } from "react-toastify";
+import { toast } from "react-toastify"; 
 
 const navItems = [
   { name: "হোম", href: "/" },
@@ -76,7 +76,7 @@ export default function Navbar() {
       </div>
 
       {/* Main Navbar */}
-      <nav className="container mx-auto flex items-center justify-between px-6 h-16 lg:h-20">
+      <nav className="container1  flex items-center justify-between px-6 h-16 lg:h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center ">
           <Image
@@ -104,7 +104,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex items-center space-x-8 text-base">
+        <ul className="hidden  lg:flex items-center space-x-8 text-base">
           {navItems.map((item) => (
             <li key={item.name} className="relative group">
               <Link

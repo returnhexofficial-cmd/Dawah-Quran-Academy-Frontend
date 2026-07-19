@@ -53,7 +53,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-primary via-emerald-600 to-teal-600 flex flex-col md:flex-row items-center justify-center overflow-y-hidden">
+    <div className="h-screen bg-gradient-to-br from-primary via-primary to-teal-600 flex flex-col md:flex-row items-center justify-center overflow-y-hidden">
       {/* Left Panel - Auth Sidebar */}
       <AuthSidebar />
 
@@ -120,7 +120,7 @@ export default function SignupPage() {
               <input
                 type="email"
                 {...register("email", { required: "Email is required" })}
-                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border-primary transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
+                className="w-full p-4 pl-12 border-2 border-gray-200 rounded-xl outline-none focus:border- transition-all duration-300 bg-white bg-opacity-80 hover:border-gray-300 group-hover:shadow-md"
                 placeholder="Enter your email address"
                 disabled={isLoading}
               />
@@ -170,7 +170,7 @@ export default function SignupPage() {
             className={`w-full py-4 rounded-xl font-semibold text-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group ${
               isLoading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-primary to-emerald-600 hover:from-primary hover:to-primary text-white hover:shadow-xl transform hover:-translate-y-1"
+                : "bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary text-white hover:shadow-xl transform hover:-translate-y-1"
             }`}
           >
             {isLoading ? (
@@ -198,7 +198,7 @@ export default function SignupPage() {
           <p className="text-sm text-darker text-center">
             Already have an account?{" "}
             <Link href="/login" className="group">
-              <span className="text-primary font-bold hover:text-emerald-600 transition-colors duration-300 relative">
+              <span className="text-primary font-bold hover:text-primary transition-colors duration-300 relative">
                 Sign In
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
               </span>

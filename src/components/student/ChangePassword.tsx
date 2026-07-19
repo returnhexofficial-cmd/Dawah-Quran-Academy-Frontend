@@ -119,7 +119,7 @@ const ChangePassword = () => {
 
           <button
             type="submit"
-            className="w-full mt-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition"
+            className="w-full mt-4 py-2 bg-primary text-white rounded-md hover:bg-[#1d3d7c] transition"
           >
             Save Changes
           </button>

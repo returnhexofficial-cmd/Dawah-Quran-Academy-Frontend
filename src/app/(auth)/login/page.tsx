@@ -60,7 +60,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-primary via-emerald-600 to-teal-600 flex flex-col md:flex-row items-center justify-center overflow-y-hidden">
+    <div className="h-screen bg-gradient-to-br from-primary via-primary to-teal-600 flex flex-col md:flex-row items-center justify-center overflow-y-hidden">
       {/* Left Panel - Auth Sidebar */}
       <AuthSidebar />
 
@@ -165,7 +165,7 @@ export default function LoginPage() {
             className={`w-full py-4 rounded-xl font-semibold text-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group ${
               isLoading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-primary to-emerald-600 hover:from-primary hover:to-primary text-white hover:shadow-xl transform hover:-translate-y-1"
+                : "bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary text-white hover:shadow-xl transform hover:-translate-y-1"
             }`}
           >
             {isLoading ? (
@@ -193,7 +193,7 @@ export default function LoginPage() {
           <p className="text-sm text-darker text-center">
             Don't have an account?{" "}
             <Link href="/register" className="group">
-              <span className="text-primary font-bold hover:text-emerald-600 transition-colors duration-300 relative">
+              <span className="text-primary font-bold hover:text-primary transition-colors duration-300 relative">
                 Create Account
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
               </span>

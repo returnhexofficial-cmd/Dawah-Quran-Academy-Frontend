@@ -142,7 +142,7 @@ const ManageBooks = () => {
       <div className="sm:flex justify-between items-center mt-10">
         <DashboardTitle blackText="Manage" greenText="Books" />
         <button
-          className="bg-primary hover:bg-dark duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
+          className="bg-primary hover:bg-[#08255c] duration-300 text-white px-4 py-2 rounded-md flex items-center gap-2 my-3 sm:my-0"
           onClick={() => setIsBookModalOpen(true)}
         >
           <AiOutlinePlus /> Add Book
@@ -297,7 +297,7 @@ const ManageBooks = () => {
               className={`text-center px-3 md:px-5 py-1 md:py-3 duration-300 rounded-lg text-white cursor-pointer ${
                 isSubmitting
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-primary hover:bg-dark"
+                  : "bg-primary hover:bg-[#08255c]"
               }`}
               type="submit"
               value={isSubmitting ? "Adding Book..." : "Add Book"}

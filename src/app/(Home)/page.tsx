@@ -7,16 +7,20 @@ import AdmissionProcess from "@/components/home/AdmissionProcess";
 import Testimonial from "@/components/home/Testimonial";
 import GetInTouch from "@/utils/GetInTouch";
 import FeatureCourses from "@/components/home/FeatureCourses";
+import HeroNew from "@/components/home/Hero-New";
+import FAQ from "@/components/home/FAQ";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
+      <HeroNew/>
       <WhyChooseUs />
       <FeatureCourses />
       <StudentStatus />
       <AdmissionProcess />
-      <Testimonial />
+      {/* <Testimonial /> */}
+      <FAQ/>
       <GetInTouch />
     </>
   );
