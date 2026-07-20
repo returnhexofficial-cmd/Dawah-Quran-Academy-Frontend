@@ -71,7 +71,7 @@ const Contact = () => {
                   মেইল
                 </h4>
                 <article className="text-left  text-[16px] md:text-[14px] lg:text-lg text-primary">
-                  quranacademybd1@gmail.com
+                  muinulislammuin16802@gmail.com
                 </article>
               </div>
             </motion.div>
@@ -88,7 +88,7 @@ const Contact = () => {
                   ফোন
                 </h4>
                 <article className="text-left  text-[16px] md:text-[14px] lg:text-lg text-primary">
-                  +880 1775-060181
+                  +8801852-955611
                 </article>
               </div>
             </motion.div>

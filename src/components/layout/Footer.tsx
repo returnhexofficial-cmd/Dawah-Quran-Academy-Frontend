@@ -1,7 +1,6 @@
-
 "use client";
 
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo1.jpeg";
 import mckp from "@/assets/footer/mosqu1.png";
 
 import Image from "next/image";
@@ -37,16 +36,19 @@ const resources = [
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black text-light font-sans mt-28  lg:mt-96 xl:mt-40">
-      {/* Background Image */}
-      <Image
-        src={mckp}
-        alt="Mosque Background"
-        className="pointer-events-none absolute bottom-52 left-0 hidden xl:w-[50%] lg:block"
-      />
+    <footer className="relative bg-black text-light font-sans mt-28 lg:mt-72 xl:mt-60">
+     
+      <div className="pointer-events-none absolute bottom-52 left-0 hidden lg:block lg:w-[880px] lg:h-[1200px] xl:w-[1080px] xl:h-[780px] 2xl:w-[1360px] 2xl:h-[940px]">
+        <Image
+          src={mckp}
+          alt="Mosque Background"
+          fill
+          className="object-contain object-left-bottom"
+        />
+      </div>
 
       {/* Main Footer */}
-      <section className="container relative z-10 mx-auto grid grid-cols-1 gap-10 px-5 py-14 md:grid-cols-2 lg:grid-cols-4">
+      <section className="container relative z-10 mx-auto grid grid-cols-1 gap-10 px-5 py-14 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
         {/* Logo */}
         <div>
           <div className="mb-5 flex items-center gap-4">
@@ -58,10 +60,10 @@ const Footer = () => {
 
             <div>
               <h3 className="text-xl font-bold text-white">
-                অনলাইন কুরআন একাডেমি
+                দাওয়াহ কুরআন একাডেমি
               </h3>
 
-              <p className="text-sm white">
+              <p className="text-sm text-white">
                 ঘরে বসেই অনলাইনে কুরআন শিক্ষা
               </p>
             </div>
@@ -76,7 +78,7 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div>
+        <div className=" xl:col-span-2 xl:flex xl:flex-col xl:items-center">
           <h4 className="mb-5 text-lg font-semibold text-white">
             গুরুত্বপূর্ণ লিংক
           </h4>
@@ -95,7 +97,7 @@ const Footer = () => {
         </div>
 
         {/* Resources */}
-        <div>
+        {/* <div>
           <h4 className="mb-5 text-lg font-semibold text-white">
             প্রয়োজনীয় তথ্য
           </h4>
@@ -112,10 +114,10 @@ const Footer = () => {
               </Link>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Social */}
-        <div>
+        <div className=" ">
           <h4 className="mb-5 text-lg font-semibold text-white">
             আমাদের সাথে যুক্ত থাকুন
           </h4>
@@ -136,7 +138,7 @@ const Footer = () => {
             </Link>
 
             <Link
-              href="https://wa.me/8801XXXXXXXXX"
+              href="https://wa.me/8801852955611"
               target="_blank"
               className="rounded-full border border-white p-3 text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
             >
@@ -150,7 +152,7 @@ const Footer = () => {
       <section className="relative z-10 border-t border-white/10">
         <div className="container mx-auto px-5 pb-5">
           <p className="text-center text-sm text-white">
-            © {new Date().getFullYear()} অনলাইন কুরআন একাডেমি। সর্বস্বত্ব
+            © {new Date().getFullYear()} দাওয়াহ কুরআন একাডেমি। সর্বস্বত্ব
             সংরক্ষিত। নির্মাণ করেছে{" "}
             <Link
               href="https://www.returnhex.com/"
@@ -167,4 +169,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

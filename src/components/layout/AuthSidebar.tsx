@@ -1,4 +1,4 @@
-import logo from "@/assets/removedBgLogo.png";
+import logo from "@/assets/logo1-removebg-preview.png";
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 import { MdStar } from "react-icons/md";
@@ -57,7 +57,7 @@ export default function AuthSidebar() {
       <div className="flex items-center gap-4 mb-8 z-10 transform hover:scale-105 transition-transform duration-300">
         <div className="w-16 h-16 lg:w-20 lg:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
           <Image
-            className="w-10 h-10 lg:w-12 lg:h-12"
+            className="w-12 h-12 lg:w-16 lg:h-16"
             src={logo}
             alt="Logo"
           />
