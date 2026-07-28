@@ -2,7 +2,6 @@
 import bg from "@/assets/topography.svg";
 import Breadcrumbs from "@/utils/Breadcrumb";
 import { Button2 } from "@/utils/Button";
-import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FormEvent, useRef } from "react";
@@ -17,38 +16,56 @@ import ContactImg from "@/assets/contact/contact-img.png";
 import Lottie from "lottie-react";
 
 const Contact = () => {
-  const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (form.current) {
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-          form.current,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-        )
-        .then(
-          (result) => {
-            if (form.current) form.current.reset();
-            if (result.status == 200) {
-              Swal.fire({
-                title: "Thank You for Reaching Out!",
-                showClass: { popup: "animate__animated animate__fadeInDown" },
-                hideClass: { popup: "animate__animated animate__fadeOutUp" },
-              });
-            }
-          },
-          (error) => {
-            console.log(error.text);
-          },
-        );
-    } else {
-      console.error("Form reference is null");
-    }
+
+const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+
+  const formData = new FormData(form);
+
+  const body = {
+    from_name: formData.get("from_name"),
+    from_email: formData.get("from_email"),
+    message: formData.get("message"),
   };
 
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.success) {
+      throw new Error(data.message || "Something went wrong");
+    }
+
+    form.reset();
+
+    Swal.fire({
+      icon: "success",
+      title: "Thank You!",
+      text: data.message,
+      confirmButtonColor: "#1f6f43",
+    });
+  } catch (err: any) {
+    console.error(err);
+
+    Swal.fire({
+      icon: "error",
+      title: "Oops!",
+      text: err.message || "Server Error",
+      confirmButtonColor: "#d33",
+    });
+  }
+};
+ 
   return (
     <section>
       <Breadcrumbs title="যোগাযোগ" />
@@ -108,7 +125,7 @@ const Contact = () => {
                   করুন। আমরা সর্বদা আপনার সেবায় নিয়োজিত।
                 </p>
 
-                <form ref={form} onSubmit={sendEmail} className="space-y-4">
+                <form onSubmit={sendEmail} className="space-y-4">
                   <input
                     className="w-full px-5 py-3.5 border border-gray-200 rounded-md outline-none focus:border-primary text-sm"
                     type="text"

@@ -154,10 +154,26 @@ const ManageBooks = () => {
       </div>
 
       <div className="flex flex-wrap gap-5 my-5">
-        {booksData.data &&
+        {booksData.data && booksData.data.length > 0 ? (
           booksData.data.map((book: TBook) => (
             <BookBox key={book?._id} book={book} refetch={booksRefetch} />
-          ))}
+          ))
+        ) : (
+          <div className="w-full flex flex-col items-center justify-center text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
+            <div className="bg-primary/10 p-6 rounded-full mb-6">
+              <BsImage className="text-5xl text-primary" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-primary mb-2">
+              কোনো বই পাওয়া যায়নি
+            </h3>
+
+            <p className="text-gray-500 max-w-md leading-7">
+              এখনো কোনো বই যোগ করা হয়নি। উপরের &quot;Add Book&quot; বাটনে
+              ক্লিক করে নতুন বই যোগ করুন।
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Modal */}

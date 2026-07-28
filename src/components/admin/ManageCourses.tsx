@@ -132,14 +132,30 @@ const ManageCourses = () => {
       </div>
 
       <div className="flex flex-wrap gap-5 my-5">
-        {coursesData.data &&
+        {coursesData.data && coursesData.data.length > 0 ? (
           coursesData.data.map((course: TCourse) => (
             <CourseBox
               key={course?._id}
               course={course}
               refetch={coursesRefetch}
             />
-          ))}
+          ))
+        ) : (
+          <div className="w-full flex flex-col items-center justify-center text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
+            <div className="bg-primary/10 p-6 rounded-full mb-6">
+              <BsImage className="text-5xl text-primary" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-primary mb-2">
+              কোনো কোর্স পাওয়া যায়নি
+            </h3>
+
+            <p className="text-gray-500 max-w-md leading-7">
+              এখনো কোনো কোর্স যোগ করা হয়নি। উপরের &quot;Add Course&quot; বাটনে
+              ক্লিক করে নতুন কোর্স যোগ করুন।
+            </p>
+          </div>
+        )}
       </div>
 
       {isCourseModalOpen && (
