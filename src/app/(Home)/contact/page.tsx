@@ -14,56 +14,46 @@ import bgImg from "@/assets/course/bg-image1.png";
 import locationPinAnimation from "@/assets/contact/RedPinOnMap.json";
 import ContactImg from "@/assets/contact/contact-img.png";
 import Lottie from "lottie-react";
+import useSendMailContact from "@/hooks/useContact";
 
 const Contact = () => {
+  const { sendMail } = useSendMailContact();
 
-
-const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   const form = e.currentTarget;
 
   const formData = new FormData(form);
 
-  const body = {
-    from_name: formData.get("from_name"),
-    from_email: formData.get("from_email"),
-    message: formData.get("message"),
+  const mailData = {
+    from_name: formData.get("from_name") as string,
+    from_email: formData.get("from_email") as string,
+    message: formData.get("message") as string,
   };
 
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
 
-    const data = await res.json();
+  sendMail(mailData, {
+    onSuccess: (data) => {
+      form.reset();
 
-    if (!res.ok || !data.success) {
-      throw new Error(data.message || "Something went wrong");
-    }
+      Swal.fire({
+        icon: "success",
+        title: "Thank You",
+        text: "আপনার মেসেজ সফলভাবে পাঠানো হয়েছে।",
+      });
+    },
 
-    form.reset();
-
-    Swal.fire({
-      icon: "success",
-      title: "Thank You!",
-      text: data.message,
-      confirmButtonColor: "#1f6f43",
-    });
-  } catch (err: any) {
-    console.error(err);
-
-    Swal.fire({
-      icon: "error",
-      title: "Oops!",
-      text: err.message || "Server Error",
-      confirmButtonColor: "#d33",
-    });
-  }
+    onError: (err: any) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops",
+        text:
+          err?.response?.data?.message ||
+          "Server Error",
+      });
+    },
+  });
 };
  
   return (
