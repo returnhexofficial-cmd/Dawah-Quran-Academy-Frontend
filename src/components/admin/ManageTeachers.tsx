@@ -137,14 +137,30 @@ const ManageTeachers = () => {
       </div>
 
       <div className="flex flex-wrap gap-5 my-5">
-        {teachersData.data &&
+        {teachersData.data && teachersData.data.length > 0 ? (
           teachersData.data.map((teacher: TTeacher) => (
             <TeacherBox
               key={teacher?._id}
               teacher={teacher}
               refetch={teachersRefetch}
             />
-          ))}
+          ))
+        ) : (
+          <div className="w-full flex flex-col items-center justify-center text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
+            <div className="bg-primary/10 p-6 rounded-full mb-6">
+              <FiUpload className="text-5xl text-primary" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-primary mb-2">
+              কোনো শিক্ষক পাওয়া যায়নি
+            </h3>
+
+            <p className="text-gray-500 max-w-md leading-7">
+              এখনো কোনো শিক্ষক যোগ করা হয়নি। উপরের &quot;Add Teacher&quot;
+              বাটনে ক্লিক করে নতুন শিক্ষক যোগ করুন।
+            </p>
+          </div>
+        )}
       </div>
 
       {isTeacherModalOpen && (
@@ -218,7 +234,7 @@ const ManageTeachers = () => {
                 />
               </div>
             </div>
-                        <div className="sm:flex gap-3">
+            <div className="sm:flex gap-3">
               <div className="w-full">
                 <label className="text-dark text-sm">
                   Teacher&apos;s Number <span className="text-red-500">*</span>
@@ -318,7 +334,7 @@ const ManageTeachers = () => {
               className={`text-center px-3 md:px-5 py-1 md:py-3 duration-300 rounded-lg text-white cursor-pointer mt-3 w-full ${
                 isSubmitting
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-primary hover:bg-green-800" 
+                  : "bg-primary hover:bg-green-800"
               }`}
               type="submit"
               value={isSubmitting ? "Adding Teacher..." : "Add Teacher"}

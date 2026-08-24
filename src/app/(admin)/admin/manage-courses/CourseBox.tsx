@@ -23,7 +23,7 @@ const CourseBox = ({ course, refetch }: ICourseBox) => {
     }));
   };
 
-  console.log(course.details);
+
 
   const handleDelete = () => {
     Swal.fire({

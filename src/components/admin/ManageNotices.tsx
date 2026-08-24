@@ -8,6 +8,7 @@ import { TNotice } from "@/types/notice.type";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { AiOutlinePlus } from "react-icons/ai";
+import { BsFileEarmarkText } from "react-icons/bs";
 import Swal from "sweetalert2";
 import DashboardTitle from "@/utils/DashboardTitle";
 import LoadingSpinner from "@/utils/LoadingSpinner";
@@ -68,14 +69,30 @@ export default function ManageNotices() {
         </button>
       </div>
       <div className="my-5 space-y-5">
-        {noticesData.data &&
+        {noticesData.data && noticesData.data.length > 0 ? (
           noticesData.data.map((notice: TNotice) => (
             <NoticeBox
               key={notice?._id}
               notice={notice}
               refetch={noticesRefetch}
             />
-          ))}
+          ))
+        ) : (
+          <div className="flex flex-col items-center justify-center text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
+            <div className="bg-primary/10 p-6 rounded-full mb-6">
+              <BsFileEarmarkText className="text-5xl text-primary" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-primary mb-2">
+              কোনো নোটিশ পাওয়া যায়নি
+            </h3>
+
+            <p className="text-gray-500 max-w-md leading-7">
+              এখনো কোনো নোটিশ যোগ করা হয়নি। উপরের &quot;Add Notice&quot; বাটনে
+              ক্লিক করে নতুন নোটিশ যোগ করুন।
+            </p>
+          </div>
+        )}
       </div>
 
       {isNoticeModalOpen && (

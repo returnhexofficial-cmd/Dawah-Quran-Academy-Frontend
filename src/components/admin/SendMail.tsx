@@ -7,6 +7,7 @@ import { TMail } from "@/types/mail.type";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { AiOutlinePlus } from "react-icons/ai";
+import { MdOutlineMailOutline } from "react-icons/md";
 import Swal from "sweetalert2";
 import DashboardTitle from "@/utils/DashboardTitle";
 import { toast } from "react-toastify";
@@ -68,10 +69,26 @@ export default function SendMail() {
         </button>
       </div>
       <div className="my-5 space-y-5">
-        {mailsData.data &&
+        {mailsData.data && mailsData.data.length > 0 ? (
           mailsData.data.map((mail: TMail) => (
             <MailBox key={mail?._id} mail={mail} />
-          ))}
+          ))
+        ) : (
+          <div className="flex flex-col items-center justify-center text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
+            <div className="bg-primary/10 p-6 rounded-full mb-6">
+              <MdOutlineMailOutline className="text-5xl text-primary" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-primary mb-2">
+              কোনো মেইল পাওয়া যায়নি
+            </h3>
+
+            <p className="text-gray-500 max-w-md leading-7">
+              এখনো কোনো মেইল পাঠানো হয়নি। উপরের &quot;Send Mail&quot; বাটনে
+              ক্লিক করে নতুন মেইল পাঠান।
+            </p>
+          </div>
+        )}
       </div>
 
       {isMailModalOpen && (
@@ -135,7 +152,7 @@ export default function SendMail() {
                   Sending...
                 </>
               ) : (
-                "Send Mail"
+                <p className="text-white">Send Mail</p>
               )}
             </button>
           </form>

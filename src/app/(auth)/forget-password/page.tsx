@@ -1,6 +1,6 @@
 "use client";
 
-import logo from "@/assets/removedBgLogo.png";
+import logo from "@/assets/logo1.jpeg";
 import useAxios from "@/hooks/useAxios";
 import { TLoginFormInputs } from "@/types/loginForm.type";
 import Image from "next/image";

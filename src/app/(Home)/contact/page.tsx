@@ -2,7 +2,6 @@
 import bg from "@/assets/topography.svg";
 import Breadcrumbs from "@/utils/Breadcrumb";
 import { Button2 } from "@/utils/Button";
-import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FormEvent, useRef } from "react";
@@ -15,40 +14,48 @@ import bgImg from "@/assets/course/bg-image1.png";
 import locationPinAnimation from "@/assets/contact/RedPinOnMap.json";
 import ContactImg from "@/assets/contact/contact-img.png";
 import Lottie from "lottie-react";
+import useSendMailContact from "@/hooks/useContact";
 
 const Contact = () => {
-  const form = useRef<HTMLFormElement>(null);
+  const { sendMail } = useSendMailContact();
 
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (form.current) {
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-          form.current,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-        )
-        .then(
-          (result) => {
-            if (form.current) form.current.reset();
-            if (result.status == 200) {
-              Swal.fire({
-                title: "Thank You for Reaching Out!",
-                showClass: { popup: "animate__animated animate__fadeInDown" },
-                hideClass: { popup: "animate__animated animate__fadeOutUp" },
-              });
-            }
-          },
-          (error) => {
-            console.log(error.text);
-          },
-        );
-    } else {
-      console.error("Form reference is null");
-    }
+  const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+
+  const formData = new FormData(form);
+
+  const mailData = {
+    from_name: formData.get("from_name") as string,
+    from_email: formData.get("from_email") as string,
+    message: formData.get("message") as string,
   };
 
+
+  sendMail(mailData, {
+    onSuccess: (data) => {
+      form.reset();
+
+      Swal.fire({
+        icon: "success",
+        title: "Thank You",
+        text: "আপনার মেসেজ সফলভাবে পাঠানো হয়েছে।",
+      });
+    },
+
+    onError: (err: any) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops",
+        text:
+          err?.response?.data?.message ||
+          "Server Error",
+      });
+    },
+  });
+};
+ 
   return (
     <section>
       <Breadcrumbs title="যোগাযোগ" />
@@ -71,7 +78,7 @@ const Contact = () => {
                   মেইল
                 </h4>
                 <article className="text-left  text-[16px] md:text-[14px] lg:text-lg text-primary">
-                  quranacademybd1@gmail.com
+                  muinulislammuin16802@gmail.com
                 </article>
               </div>
             </motion.div>
@@ -88,7 +95,7 @@ const Contact = () => {
                   ফোন
                 </h4>
                 <article className="text-left  text-[16px] md:text-[14px] lg:text-lg text-primary">
-                  +880 1775-060181
+                  +8801852-955611
                 </article>
               </div>
             </motion.div>
@@ -108,7 +115,7 @@ const Contact = () => {
                   করুন। আমরা সর্বদা আপনার সেবায় নিয়োজিত।
                 </p>
 
-                <form ref={form} onSubmit={sendEmail} className="space-y-4">
+                <form onSubmit={sendEmail} className="space-y-4">
                   <input
                     className="w-full px-5 py-3.5 border border-gray-200 rounded-md outline-none focus:border-primary text-sm"
                     type="text"

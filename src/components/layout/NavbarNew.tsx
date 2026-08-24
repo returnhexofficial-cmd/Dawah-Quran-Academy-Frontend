@@ -14,14 +14,14 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { handleLogout, useAuth } from "@/app/providers/AuthContext";
 import { useUser } from "@/app/providers/UserContext";
-import logo from "@/assets/logo-without-bg.png";
+import logo from "@/assets/logo1.jpeg";
 
 const navItems = [
   { name: "হোম", href: "/" },
-  { name: "কোর্সসমূহ", href: "/" },  //  /courses
+  { name: "কোর্সসমূহ", href: "/courses" },  //  /courses
   { name: "বইসমূহ", href: "/books" },
   { name: "শিক্ষকবৃন্দ", href: "/teachers" },
-  { name: "যোগাযোগ", href: "/" },  //  /contact
+  { name: "যোগাযোগ", href: "/contact" },  //  /contact
 ];
 
 export default function NavbarNew() {
@@ -193,12 +193,12 @@ export default function NavbarNew() {
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <IoMdCall className="text-[#c8a951]" size={15} />
-                <span className="text-gray-200">+8801775-060181</span>
+                <span className="text-gray-200">+8801852-955611</span>
               </div>
               <div className="hidden lg:flex items-center gap-2">
                 <IoMdMail className="text-[#c8a951]" size={15} />
                 <span className="text-gray-200">
-                  quranacademybd1@gmail.com
+                  muinulislammuin16802@gmail.com
                 </span>
               </div>
             </div>
