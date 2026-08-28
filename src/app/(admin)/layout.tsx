@@ -32,6 +32,11 @@ export default function AdminLayout({
 
   return (
     <html>
+      <head>
+        <link rel="icon" href="/logo1-removebg-preview.png" type="image/png" />
+        <link rel="shortcut icon" href="/logo1-removebg-preview.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo1-removebg-preview.png" />
+      </head>
       <body>
         <AuthProvider>
           <ProtectedRoute allowedRoles={["admin"]}>
