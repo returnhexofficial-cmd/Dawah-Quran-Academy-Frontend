@@ -10,10 +10,10 @@ import { IoMdCall } from "react-icons/io";
 
 import { handleLogout, useAuth } from "@/app/providers/AuthContext";
 import { useUser } from "@/app/providers/UserContext";
-import logo from "@/assets/logo-without-bg.png";
+import logo from "@/assets/logo1-removebg-preview.png";
 import { useRouter, usePathname } from "next/navigation";
 import { LuLogOut } from "react-icons/lu";
-import { toast } from "react-toastify"; 
+import { toast } from "react-toastify";
 
 const navItems = [
   { name: "হোম", href: "/" },
@@ -41,18 +41,16 @@ export default function Navbar() {
     <header
       className={`
         fixed top-0 w-full z-50 transition-all duration-300
-        ${
-          scrolled
-            ? "bg-white shadow-md "
-            : "bg-white sm:bg-white/15 backdrop-blur-md sm:text-white"
+        ${scrolled
+          ? "bg-white shadow-md "
+          : "bg-white sm:bg-white/15 backdrop-blur-md sm:text-white"
         }
       `}
     >
       {/* Top Mini‑Bar */}
       <div
-        className={`hidden sm:flex bg-primary  items-center transition-all duration-300 ${
-          scrolled ? "opacity-0 pointer-events-none h-0" : "opacity-100 h-10"
-        }`}
+        className={`hidden sm:flex bg-primary  items-center transition-all duration-300 ${scrolled ? "opacity-0 pointer-events-none h-0" : "opacity-100 h-10"
+          }`}
       >
         <div className="container mx-auto text-white flex justify-between items-center gap-5 py-8">
           <div className="slider-container w-1/2 flex-nowrap relative overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
@@ -63,7 +61,7 @@ export default function Navbar() {
           </div>
           <div className="flex items-center gap-4">
             <Link
-              href="https://www.facebook.com/onlinequranacademy24"
+              href="https://www.facebook.com/profile.php?id=61573213246773"
               target="_blank"
             >
               <BsFacebook className="text-xl hover:text-green-500 transition" />
@@ -109,11 +107,10 @@ export default function Navbar() {
             <li key={item.name} className="relative group">
               <Link
                 href={item.href}
-                className={`relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100  ${
-                  scrolled
+                className={`relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100  ${scrolled
                     ? "hover:text-primary after:bg-primary"
                     : "hover:text-darker after:bg-darker"
-                } `}
+                  } `}
               >
                 {item.name}
                 {pathname === item.href && (
@@ -127,7 +124,7 @@ export default function Navbar() {
 
           <li>
             <Link
-              href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
+              href="https://docs.google.com/forms/not-found"
               target="_blank"
               className="relative inline-block text-lg group"
             >
@@ -148,11 +145,10 @@ export default function Navbar() {
               <div className="flex items-center gap-4">
                 <div className="relative group inline-block">
                   <div
-                    className={`${
-                      scrolled
+                    className={`${scrolled
                         ? "bg-primary text-white"
                         : "bg-gray-100 text-primary"
-                    } p-2 h-10 w-10 grid place-items-center rounded-full font-semibold  cursor-pointer`}
+                      } p-2 h-10 w-10 grid place-items-center rounded-full font-semibold  cursor-pointer`}
                   >
                     {profile.avatar !== "" && profile.avatar !== undefined ? (
                       <Image
@@ -168,11 +164,10 @@ export default function Navbar() {
                       />
                     ) : (
                       <Link
-                        href={`${
-                          auth?.user.role === "student"
+                        href={`${auth?.user.role === "student"
                             ? "/student/student-dashboard"
                             : "/admin/admin-home"
-                        }`}
+                          }`}
                       >
                         {profile.name?.split(" ")[0][0]}
                       </Link>
@@ -218,9 +213,8 @@ export default function Navbar() {
                   </svg>
                 </span>
                 <span
-                  className={`absolute flex items-center justify-center w-full h-full ${
-                    scrolled ? "text-primary " : "text-white"
-                  } transition-all duration-300 transform group-hover:translate-x-full ease`}
+                  className={`absolute flex items-center justify-center w-full h-full ${scrolled ? "text-primary " : "text-white"
+                    } transition-all duration-300 transform group-hover:translate-x-full ease`}
                 >
                   Login
                 </span>
@@ -231,7 +225,7 @@ export default function Navbar() {
         </ul>
         <div className="lg:hidden flex items-center gap-5">
           <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
+            href="https://docs.google.com/forms/not-found"
             target="_blank"
             className="relative inline-block text-base group"
           >
@@ -250,11 +244,10 @@ export default function Navbar() {
             <>
               <div className="relative group inline-block">
                 <div
-                  className={`${
-                    scrolled
+                  className={`${scrolled
                       ? "bg-primary text-white"
                       : "bg-gray-100 text-primary"
-                  } p-1 h-8 w-8 grid place-items-center rounded-full font-semibold cursor-pointer`}
+                    } p-1 h-8 w-8 grid place-items-center rounded-full font-semibold cursor-pointer`}
                 >
                   {profile.avatar !== "" && profile.avatar !== undefined ? (
                     <Image
@@ -270,11 +263,10 @@ export default function Navbar() {
                     />
                   ) : (
                     <Link
-                      href={`${
-                        auth?.user.role === "student"
+                      href={`${auth?.user.role === "student"
                           ? "/student/student-dashboard"
                           : "/admin/admin-home"
-                      }`}
+                        }`}
                     >
                       {profile.name.split(" ")[0][0]}
                     </Link>
@@ -316,9 +308,8 @@ export default function Navbar() {
                 </svg>
               </span>
               <span
-                className={`absolute flex items-center justify-center w-full h-full ${
-                  scrolled ? "text-primary " : "sm:text-white"
-                } transition-all duration-300 transform group-hover:translate-x-full ease`}
+                className={`absolute flex items-center justify-center w-full h-full ${scrolled ? "text-primary " : "sm:text-white"
+                  } transition-all duration-300 transform group-hover:translate-x-full ease`}
               >
                 Login
               </span>

@@ -18,7 +18,7 @@ const quickLinks = [
 const resources = [
   {
     name: "ভর্তি",
-    href: "https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform",
+    href: "https://docs.google.com/forms/not-found",
   },
   {
     name: "গোপনীয়তা নীতি",
@@ -37,7 +37,7 @@ const resources = [
 const Footer = () => {
   return (
     <footer className="relative bg-black text-light font-sans mt-28 lg:mt-72 xl:mt-60">
-     
+
       <div className="pointer-events-none absolute bottom-52 left-0 hidden lg:block lg:w-[880px] lg:h-[1200px] xl:w-[1080px] xl:h-[780px] 2xl:w-[1360px] 2xl:h-[940px]">
         <Image
           src={mckp}
@@ -130,7 +130,7 @@ const Footer = () => {
 
           <div className="flex gap-5">
             <Link
-              href="https://www.facebook.com/onlinequranacademy24"
+              href="https://www.facebook.com/profile.php?id=61573213246773"
               target="_blank"
               className="rounded-full border border-white p-3 text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
             >

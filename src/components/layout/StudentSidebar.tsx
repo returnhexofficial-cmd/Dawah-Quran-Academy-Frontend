@@ -1,7 +1,7 @@
 "use client";
 import { handleLogout } from "@/app/providers/AuthContext";
 import { useUser } from "@/app/providers/UserContext";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo1.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";

@@ -214,7 +214,7 @@ const Courses = () => {
                       </span>
 
                       <Link
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
+                        href="https://docs.google.com/forms/not-found"
                         target="_blank"
                         className="rounded-xl border-2 border-primary bg-primary px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-[#ffd54f] hover:bg-[#ffd54f] hover:text-primary"
                       >

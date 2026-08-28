@@ -13,7 +13,7 @@ const GetInTouch = () => {
                     <h2 className='text-lg md:text-2xl font-bold'>শয়তান যেন আপনার দ্বীন শিখার পথে বিলম্ব না করায়। আজই শুরু করুন!</h2>
                 </div>
                 <Link
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
+                    href="https://docs.google.com/forms/not-found"
                     target="_blank"
                     className='bg-white text-black px-5 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-100 w-[268px] text-center'
                 >
