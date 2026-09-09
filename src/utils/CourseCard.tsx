@@ -4,13 +4,13 @@ import { FaStar, FaUser } from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { LuBook, LuClock } from "react-icons/lu";
 
- interface CourseCardProps {
+interface CourseCardProps {
   course: TCourse;
   showAll: boolean;
   onToggle: () => void;
 }
 
-  const CourseCard = ({ course, showAll, onToggle }: CourseCardProps) => {
+const CourseCard = ({ course, showAll, onToggle }: CourseCardProps) => {
   // Static placeholder values – replace with real fields when backend supplies them
   const enrolledCount = "২৫০ জন ভর্তি";
   const lessonCount = "১২০টি পাঠ";
@@ -144,7 +144,7 @@ import { LuBook, LuClock } from "react-icons/lu";
             </span>
           </div>
           <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
+            href="https://docs.google.com/forms/not-found"
             target="_blank"
             className="px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105"
             style={{

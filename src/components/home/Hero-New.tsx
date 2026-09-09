@@ -57,7 +57,7 @@ const HeroNew = () => {
             <Button4 text="যোগাযোগ" to="/contact" />
             <Button3
               text="এডমিশন"
-              to="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
+              to="https://docs.google.com/forms/not-found"
               target="_blank"
             />
           </div>

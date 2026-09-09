@@ -1,7 +1,7 @@
 "use client";
 import { handleLogout } from "@/app/providers/AuthContext";
 import { useUser } from "@/app/providers/UserContext";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo1.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -12,6 +12,7 @@ import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
   MdNotificationAdd,
+  MdOutlineVideoCall,
   MdRateReview,
 } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -29,6 +30,11 @@ export default function StudentSidebar({
   const pathname = usePathname();
   const navItems = [
     { href: "/student/student-dashboard", label: "Profile", Icon: CgProfile },
+    {
+      href: "/student/classes",
+      label: "My Classes",
+      Icon: MdOutlineVideoCall,
+    },
     { href: "/student/notices", label: "Notice", Icon: MdNotificationAdd },
     {
       href: "/student/student-reviews",

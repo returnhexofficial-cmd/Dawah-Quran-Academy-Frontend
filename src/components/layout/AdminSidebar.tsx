@@ -13,6 +13,7 @@ import {
   MdKeyboardDoubleArrowRight,
   MdNotificationAdd,
   MdOutlineRateReview,
+  MdOutlineVideoCall,
 } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import { handleLogout } from "@/app/providers/AuthContext";
@@ -47,6 +48,11 @@ export default function AdminSidebar({
       href: "/admin/manage-notices",
       label: "Add Notice",
       Icon: MdNotificationAdd,
+    },
+    {
+      href: "/admin/manage-classes",
+      label: "Manage Classes",
+      Icon: MdOutlineVideoCall,
     },
     {
       href: "/admin/manage-teachers",

@@ -16,13 +16,14 @@ import {
 import { LuBook, LuClock } from "react-icons/lu";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import CourseCard from "@/utils/CourseCard";
+import LoadingSpinner from "@/utils/LoadingSpinner";
 
 import bgImg from "@/assets/course/bg-image1.png";
 import Image from "next/image";
 
 const Courses = () => {
   const [showAll, setShowAll] = useState<{ [key: string]: boolean }>({});
-  const { coursesData } = useCourses();
+  const { coursesData, coursesLoading } = useCourses();
 
   const toggleDetails = (courseId: string) => {
     setShowAll((prev) => ({ ...prev, [courseId]: !prev[courseId] }));
@@ -129,7 +130,12 @@ const Courses = () => {
             </h2>
           </div>
 
-          {hasCourses ? (
+          {coursesLoading ? (
+            <LoadingSpinner
+              className="py-24 bg-white rounded-3xl border border-dashed border-gray-300"
+              label="কোর্সসমূহ লোড হচ্ছে..."
+            />
+          ) : hasCourses ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
               {coursesData.data.map((course: TCourse) => (
                 <div
@@ -214,7 +220,7 @@ const Courses = () => {
                       </span>
 
                       <Link
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSd-SCNJ6ay9vvFIGfSPQizD5YKd0GJqZljXSDTKy9oLeBks5g/viewform"
+                        href="https://docs.google.com/forms/not-found"
                         target="_blank"
                         className="rounded-xl border-2 border-primary bg-primary px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-[#ffd54f] hover:bg-[#ffd54f] hover:text-primary"
                       >

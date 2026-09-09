@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosSecure = axios.create({
   baseURL: "http://localhost:5000/api/v1",
-  // baseURL: "https://quran-academy-backend.onrender.com/api/v1",
+  // baseURL: "https://dawah-quran-academy-backend.onrender.com/api/v1",
 });
 
 const useAxios = () => {

@@ -8,6 +8,7 @@ import { FormEvent, useRef } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { FaMapMarkerAlt, FaRegClock } from "react-icons/fa";
+import { ImSpinner2 } from "react-icons/im";
 import Swal from "sweetalert2";
 
 import bgImg from "@/assets/course/bg-image1.png";
@@ -17,7 +18,7 @@ import Lottie from "lottie-react";
 import useSendMailContact from "@/hooks/useContact";
 
 const Contact = () => {
-  const { sendMail } = useSendMailContact();
+  const { sendMail, mailSending } = useSendMailContact();
 
   const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -140,9 +141,21 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="bg-primary text-white py-3.5 px-5 rounded-md hover:bg-[#2c3a5a] transition-colors duration-300"
+                    disabled={mailSending}
+                    className={`flex items-center justify-center gap-2 py-3.5 px-5 rounded-md text-white transition-colors duration-300 ${
+                      mailSending
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-primary hover:bg-[#2c3a5a]"
+                    }`}
                   >
-                    ম্যাসেজ পাঠান
+                    {mailSending ? (
+                      <>
+                        <ImSpinner2 className="w-4 h-4 animate-spin" />
+                        <span>পাঠানো হচ্ছে...</span>
+                      </>
+                    ) : (
+                      "ম্যাসেজ পাঠান"
+                    )}
                   </button>
                 </form>
 
