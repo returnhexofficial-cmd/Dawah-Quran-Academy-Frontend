@@ -18,6 +18,7 @@ const ChangePassword = () => {
   const axiosSecure = useAxios();
   const router = useRouter();
   const [error, setError] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const {
     register,
     handleSubmit,
@@ -38,6 +39,7 @@ const ChangePassword = () => {
     };
 
     const token = localStorage.getItem("accessToken");
+    setIsSaving(true);
     axiosSecure
       .post("/auth/change-password", updateData, {
         headers: {
@@ -56,6 +58,9 @@ const ChangePassword = () => {
       .catch((error) => {
         console.log(error);
         toast.error(error.response.data.message);
+      })
+      .finally(() => {
+        setIsSaving(false);
       });
   };
 
@@ -119,9 +124,21 @@ const ChangePassword = () => {
 
           <button
             type="submit"
-            className="w-full mt-4 py-2 bg-primary text-white rounded-md hover:bg-[#1d3d7c] transition"
+            disabled={isSaving}
+            className={`w-full mt-4 py-2 rounded-md text-white transition flex items-center justify-center gap-2 ${
+              isSaving
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-primary hover:bg-[#1d3d7c]"
+            }`}
           >
-            Save Changes
+            {isSaving ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                Saving...
+              </>
+            ) : (
+              "Save Changes"
+            )}
           </button>
         </form>
       </div>

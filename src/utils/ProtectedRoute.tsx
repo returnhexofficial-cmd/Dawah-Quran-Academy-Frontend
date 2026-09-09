@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import LoadingSpinner from "./LoadingSpinner";
 
 type Props = {
   children: React.ReactNode;
@@ -46,7 +47,12 @@ export default function ProtectedRoute({ children, allowedRoles }: Props) {
     }
   }, []);
 
-  if (!isAuthorized) return null;
+  if (!isAuthorized)
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <LoadingSpinner className="py-0" />
+      </div>
+    );
 
   return <>{children}</>;
 }

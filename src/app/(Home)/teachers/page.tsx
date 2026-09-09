@@ -4,6 +4,7 @@ import female from "@/assets/Avatar/women-teacher.png";
 import male from "@/assets/Avatar/male_avatar.png";
 import Breadcrumbs from "@/utils/Breadcrumb";
 import GetInTouch from "@/utils/GetInTouch";
+import LoadingSpinner from "@/utils/LoadingSpinner";
 import useTeachers from "@/hooks/useTeachers";
 import { TTeacher } from "@/types/teacher.type";
 import Image from "next/image";
@@ -11,7 +12,7 @@ import TeacherCard from "@/components/home/TeacherCard";
 import { HiOutlineUserGroup } from "react-icons/hi";
 
 const TeachersSection = () => {
-  const { teachersData } = useTeachers();
+  const { teachersData, teachersLoading } = useTeachers();
 
   const hasTeachers = teachersData?.data && teachersData.data.length > 0;
 
@@ -32,7 +33,12 @@ const TeachersSection = () => {
             </p>
           </div>
 
-          {hasTeachers ? (
+          {teachersLoading ? (
+            <LoadingSpinner
+              className="py-24 bg-white rounded-3xl border border-dashed border-gray-300 max-w-[1200px] mx-auto"
+              label="শিক্ষকবৃন্দের তালিকা লোড হচ্ছে..."
+            />
+          ) : hasTeachers ? (
             <div className="grid grid-cols-1 w-full max-w-[1200px] mx-auto sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {teachersData.data.map((teacher: TTeacher) => (
                 <TeacherCard key={teacher._id} teacher={teacher} />

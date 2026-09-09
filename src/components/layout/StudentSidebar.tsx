@@ -12,6 +12,7 @@ import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
   MdNotificationAdd,
+  MdOutlineVideoCall,
   MdRateReview,
 } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -29,6 +30,11 @@ export default function StudentSidebar({
   const pathname = usePathname();
   const navItems = [
     { href: "/student/student-dashboard", label: "Profile", Icon: CgProfile },
+    {
+      href: "/student/classes",
+      label: "My Classes",
+      Icon: MdOutlineVideoCall,
+    },
     { href: "/student/notices", label: "Notice", Icon: MdNotificationAdd },
     {
       href: "/student/student-reviews",

@@ -2,6 +2,7 @@
 
 import Breadcrumbs from "@/utils/Breadcrumb";
 import GetInTouch from "@/utils/GetInTouch";
+import LoadingSpinner from "@/utils/LoadingSpinner";
 import useBooks from "@/hooks/useBooks";
 import { TBook } from "@/types/books.type";
 
@@ -14,7 +15,7 @@ import { FaBookOpen, FaArrowRight, FaUserEdit } from "react-icons/fa";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
 
 const Books = () => {
-  const { booksData } = useBooks();
+  const { booksData, booksLoading } = useBooks();
 
   const hasBooks = booksData.data && booksData.data.length > 0;
 
@@ -35,7 +36,12 @@ const Books = () => {
             </p>
           </div>
 
-          {hasBooks ? (
+          {booksLoading ? (
+            <LoadingSpinner
+              className="py-24 bg-white rounded-3xl border border-dashed border-gray-300"
+              label="বইসমূহ লোড হচ্ছে..."
+            />
+          ) : hasBooks ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {booksData.data?.map((book: TBook) => (
                 <div
