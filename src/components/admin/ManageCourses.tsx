@@ -84,14 +84,14 @@ const ManageCourses = () => {
       formData.append("method", data.method);
       formData.append("duration", data.duration);
 
-      // details ; দিয়ে আলাদা করা string থেকে array বানিয়ে JSON হিসেবে পাঠানো হচ্ছে
+
       const detailsArray = data.details
         .split(";")
         .map((item: string) => item.trim())
         .filter((item: string) => item.length > 0); // empty string bad
       formData.append("details", JSON.stringify(detailsArray));
 
-      // Backend upload.single("cover")
+      
       formData.append("cover", coverFile);
 
       const res = await axiosSecure.post("/courses", formData, {

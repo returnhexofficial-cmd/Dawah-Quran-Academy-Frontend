@@ -68,29 +68,6 @@ const ManageBooks = () => {
     setCoverPreview(null);
   };
 
-  // Upload image to ImgBB
-  const uploadImageToImgBB = async (file: File) => {
-    const apiKey = process.env.NEXT_PUBLIC_IMG_BB_API_KEY;
-    const formData = new FormData();
-    formData.append("image", file);
-
-    try {
-      const response = await fetch(
-        `https://api.imgbb.com/1/upload?key=${apiKey}`,
-        { method: "POST", body: formData }
-      );
-      const data = await response.json();
-      if (!data.success) {
-        toast.error(data.error?.message || "Image upload failed");
-        return;
-      }
-      return data.data.url;
-    } catch (error) {
-      console.error("Image upload error:", error);
-      toast.error("Failed to upload image");
-    }
-  };
-
  const onBookDataSubmit: SubmitHandler<IFormInput> = async (data) => {
   if (!coverFile) {
     toast.error("Please upload a book cover image");

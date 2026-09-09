@@ -19,6 +19,7 @@ type JwtPayload = {
 export default function AdminProfile() {
   const [isEditing, setIsEditing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const axiosSecure = useAxios();
   const [profile, setProfile] = useState({
     name: "",
@@ -61,11 +62,20 @@ export default function AdminProfile() {
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     const { avatar, ...safeProfile } = profile;
+    const formData = new FormData();
+    Object.entries(safeProfile).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    if (imageFile) formData.append("image", imageFile);
+
     axiosSecure
-      .patch(`/users/update-user/${decoded.userId}`, safeProfile)
+      .put(`/users/update-user/${decoded.userId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
       .then(({ data }) => {
         if (data.success) {
           toast.success("Teacher Profile Updated!");
+          setImageFile(null);
         }
       })
       .catch((err) => console.log(err));
@@ -85,41 +95,13 @@ export default function AdminProfile() {
     if (!file) return;
 
     const previewUrl = URL.createObjectURL(file);
+    setImageFile(file);
     setProfile((prev) => ({ ...prev, avatar: previewUrl }));
-
-    const formData = new FormData();
-    formData.append("image", file);
-
-    try {
-      const apiKey = process.env.NEXT_PUBLIC_IMG_BB_API_KEY;
-      const response = await fetch(
-        `https://api.imgbb.com/1/upload?key=${apiKey}`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const data = await response.json();
-
-      if (data.success) {
-        const uploadedImgUrl = data.data.url;
-        toast.success("Image uploaded successfully!");
-        await axiosSecure.patch(`/users/update-user/${decoded.userId}`, {
-          image: uploadedImgUrl,
-        });
-        setProfile((prev) => ({ ...prev, avatar: uploadedImgUrl }));
-      } else {
-        toast.error("Image upload failed. Please try again.");
-      }
-    } catch (error) {
-      console.error("Upload error:", error);
-    }
   };
 
   return (
-    <div className="max-w-4xl flex flex-col justify-center px-4 mx-auto">
-      <DashboardTitle blackText="Teacher" greenText="Profile" />
+    <div className="max-w-4xl mx-auto">
+      <DashboardTitle blackText="Teacher" greenText="Profile" className=" mt-10" />
       {!isEditing ? (
         // VIEW MODE
         <section

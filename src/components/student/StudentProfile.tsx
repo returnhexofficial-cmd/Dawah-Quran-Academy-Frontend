@@ -27,6 +27,7 @@ export default function StudentProfile() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const axiosSecure = useAxios();
 
   const [profile, setProfile] = useState<{
@@ -87,11 +88,20 @@ export default function StudentProfile() {
     e.preventDefault();
     setIsSaving(true);
     const { avatar, ...safeProfile } = profile;
+    const formData = new FormData();
+    Object.entries(safeProfile).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    if (imageFile) formData.append("image", imageFile);
+
     axiosSecure
-      .patch(`/users/update-user/${decoded.userId}`, safeProfile)
+      .put(`/users/update-user/${decoded.userId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
       .then(({ data }) => {
         if (data.success) {
           toast.success("Student Profile updated");
+          setImageFile(null);
           router.push("/student/student-dashboard");
         }
       })
@@ -113,36 +123,8 @@ export default function StudentProfile() {
     if (!file) return;
 
     const previewUrl = URL.createObjectURL(file);
+    setImageFile(file);
     setProfile((prev) => ({ ...prev, avatar: previewUrl }));
-
-    const formData = new FormData();
-    formData.append("image", file);
-
-    try {
-      const apiKey = process.env.NEXT_PUBLIC_IMG_BB_API_KEY;
-      const response = await fetch(
-        `https://api.imgbb.com/1/upload?key=${apiKey}`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const data = await response.json();
-
-      if (data.success) {
-        const uploadedImageUrl = data.data.url;
-        toast.success("Image uploaded successfully!");
-        await axiosSecure.patch(`/users/update-user/${decoded.userId}`, {
-          image: uploadedImageUrl,
-        });
-        setProfile((prev) => ({ ...prev, avatar: uploadedImageUrl }));
-      } else {
-        toast.error("Image upload failed. Please try again.");
-      }
-    } catch (error) {
-      console.log("Upload error:", error);
-    }
   };
 
   const handleBack = () => {
