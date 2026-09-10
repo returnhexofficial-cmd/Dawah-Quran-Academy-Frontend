@@ -1,4 +1,5 @@
 "use client";
+import SiteConfigForm from "@/components/admin/SiteConfigForm";
 import useCourses from "@/hooks/useCourses";
 import useMails from "@/hooks/useMails";
 import useNotices from "@/hooks/useNotices";
@@ -84,6 +85,8 @@ export default function AdminHome() {
           <MdOutlineMail className="text-4xl text-cyan-600" />
         </div>
       </div>
+
+      <SiteConfigForm />
       {/* <AdminDashboard /> */}
     </div>
   );

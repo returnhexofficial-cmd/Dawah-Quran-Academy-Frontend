@@ -1,4 +1,7 @@
+"use client";
+
 import { TCourse } from "@/types/course.type";
+import { useSiteConfig } from "@/app/providers/SiteConfigContext";
 import Link from "next/link";
 import { FaStar, FaUser } from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
@@ -11,6 +14,7 @@ interface CourseCardProps {
 }
 
 const CourseCard = ({ course, showAll, onToggle }: CourseCardProps) => {
+  const { siteConfig } = useSiteConfig();
   // Static placeholder values – replace with real fields when backend supplies them
   const enrolledCount = "২৫০ জন ভর্তি";
   const lessonCount = "১২০টি পাঠ";
@@ -107,7 +111,7 @@ const CourseCard = ({ course, showAll, onToggle }: CourseCardProps) => {
                   />
                   <span className="text-gray-500">{detail}</span>
                 </li>
-              )
+              ),
             )}
           </ul>
           {!showAll && course.details.length > 4 && (
@@ -135,16 +139,13 @@ const CourseCard = ({ course, showAll, onToggle }: CourseCardProps) => {
         {/* price + enroll row */}
         <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
           <div>
-            <span
-              className="text-lg font-bold"
-              style={{ color: "#374868" }}
-            >
+            <span className="text-lg font-bold" style={{ color: "#374868" }}>
               ${course.fee}
               <span className="text-xs font-normal text-gray-400">/মাস</span>
             </span>
           </div>
           <Link
-            href="https://docs.google.com/forms/not-found"
+            href={siteConfig.admissionLink}
             target="_blank"
             className="px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105"
             style={{
@@ -171,6 +172,4 @@ const CourseCard = ({ course, showAll, onToggle }: CourseCardProps) => {
   );
 };
 
-
 export default CourseCard;
-

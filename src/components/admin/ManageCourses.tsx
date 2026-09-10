@@ -243,7 +243,7 @@ const ManageCourses = () => {
             <input
               type="number"
               {...register("fee", { required: true })}
-              placeholder="ডলার রেটে, ইংরেজিতে"
+              placeholder="টাকায়"
               className={`w-full border p-2 rounded-md mb-3 ${
                 errors.fee && "border-red-500"
               }`}
@@ -251,7 +251,7 @@ const ManageCourses = () => {
 
             {/* Course Method */}
             <label className="text-dark text-sm">
-              Method <span className="text-red-500">*</span>
+              Method (ব্যাচ ক্লাস নাকি ওয়ান টূ ওয়ান সেশন)<span className="text-red-500">*</span>
             </label>
             <select
               {...register("method", { required: true })}

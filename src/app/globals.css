@@ -107,8 +107,120 @@ textarea {
   transition-timing-function: ease-in-out;
 }
 
-.container1{
-  @apply w-[100%] px-[4%] md:px-[4%] lg:px-[5%] xl:px-[8%];
+/* -- Layout system ------------------------------------------------
+   One shell for every page and section so gutters line up with the
+   navbar (which is capped at the same 1400px).
+     .site-container        standard content width
+     .site-container-narrow reading-width blocks (quotes, stats, CTA)
+     .section-y             standard vertical rhythm between sections
+     .section-y-lg          taller bands (hero, page intro)
+   ---------------------------------------------------------------- */
+@layer components {
+  .site-container {
+    @apply w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .site-container-narrow {
+    @apply w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-y {
+    @apply py-14 md:py-16 lg:py-20;
+  }
+
+  .section-y-lg {
+    @apply py-16 md:py-20 lg:py-28;
+  }
+
+  /* Legacy alias so any un-migrated markup lands in the same shell. */
+  .container1 {
+    @apply site-container;
+  }
+}
+
+/* -- Card / control / motion system -------------------------------
+   Every public page composes its cards, buttons and inputs from these
+   so hover, focus and entrance behaviour match across the site.
+   ---------------------------------------------------------------- */
+@layer components {
+  /* Shared card chrome. */
+  .card-surface {
+    @apply overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm;
+  }
+
+  /* One hover response for every card. Card root also needs `group`. */
+  .card-hover {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-xl;
+  }
+
+  /* Media inside a card marked `group`. */
+  .media-zoom {
+    @apply transition-transform duration-500 ease-out group-hover:scale-105;
+  }
+
+  /* Pill sitting on top of card media. */
+  .card-badge {
+    @apply absolute z-10 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold shadow-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-light disabled:cursor-not-allowed disabled:bg-gray-400;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-primary transition-colors duration-300 hover:bg-primary hover:text-white;
+  }
+
+  /* CTA on top of a primary-coloured panel. */
+  .btn-on-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-primary transition-colors duration-300 hover:bg-accent;
+  }
+
+  .field {
+    @apply w-full rounded-md border border-gray-200 px-5 py-3.5 text-sm outline-none transition-colors duration-200 focus:border-primary;
+  }
+}
+
+@layer utilities {
+  /* Entrance for list items; stagger with style={{ "--delay": "60ms" }}. */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0ms);
+  }
+}
+
+/* One visible focus ring site-wide, for keyboard users only. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid #083519;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .anim {

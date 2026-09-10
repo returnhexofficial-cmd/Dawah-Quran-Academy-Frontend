@@ -11,13 +11,13 @@ import makkaImg2 from "@/assets/Home-Hero/sm-makka-img2.svg";
 import makkaImg3 from "@/assets/Home-Hero/sm-makka-img3.svg";
 import { Button3, Button4 } from "@/utils/Button";
 import PrayerWidget from "@/utils/Clock";
-
-
+import { useSiteConfig } from "@/app/providers/SiteConfigContext";
 
 const HeroNew = () => {
+  const { siteConfig } = useSiteConfig();
   return (
     <section className="bg-[#f2f3f5]">
-      <div className="flex relative flex-col lg:flex-row justify-between items-center container1 pb-20 pt-32 gap-16 md:gap-32 md:pt-44 md:pb-32 lg:pt-52 lg:pb-20">
+      <div className="site-container section-y-lg flex relative flex-col lg:flex-row justify-between items-center gap-12 lg:gap-16">
         <div className=" absolute left-0 bottom-0 w-full flex justify-center items-center">
           <PrayerWidget />
         </div>
@@ -57,7 +57,7 @@ const HeroNew = () => {
             <Button4 text="যোগাযোগ" to="/contact" />
             <Button3
               text="এডমিশন"
-              to="https://docs.google.com/forms/not-found"
+              to={siteConfig.admissionLink}
               target="_blank"
             />
           </div>
@@ -65,11 +65,11 @@ const HeroNew = () => {
 
         {/* Right */}
         <div className="w-full lg:block lg:w-[45%] flex justify-center items-center">
-          <div className="w-[70%] lg:w-[80%] flex justify-center items-center relative">
+          <div className="w-[70%] lg:w-[80%] lg:ml-auto flex justify-center items-center relative">
             <Image
               src={makkaImg2}
               alt=""
-              className="anim2 hidden lg:block absolute lg:-right-10 xl:right-10 top-0 lg:w-[45px] xl:w-[60px] h-auto object-cover"
+              className="anim2 hidden lg:block absolute lg:right-0 xl:right-10 top-0 lg:w-[45px] xl:w-[60px] h-auto object-cover"
             />
             <Image
               src={makkaImg1}

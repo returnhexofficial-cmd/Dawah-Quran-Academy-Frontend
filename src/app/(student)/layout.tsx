@@ -7,6 +7,7 @@ import { AuthProvider } from "../providers/AuthContext";
 import { UserProvider } from "../providers/UserContext";
 import ProtectedRoute from "@/utils/ProtectedRoute";
 import QueryProvider from "../providers/QueryProvider";
+import { SiteConfigProvider } from "../providers/SiteConfigContext";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -28,7 +29,11 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
     <html>
       <head>
         <link rel="icon" href="/logo1-removebg-preview.png" type="image/png" />
-        <link rel="shortcut icon" href="/logo1-removebg-preview.png" type="image/png" />
+        <link
+          rel="shortcut icon"
+          href="/logo1-removebg-preview.png"
+          type="image/png"
+        />
         <link rel="apple-touch-icon" href="/logo1-removebg-preview.png" />
       </head>
       <body>
@@ -36,19 +41,21 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           <ProtectedRoute allowedRoles={["student"]}>
             <UserProvider>
               <QueryProvider>
-                <section className="flex min-h-screen items-start">
-                  <StudentSidebar isOpen={isOpen} setIsOpen={setIsOpen} />
-                  <section
-                    className={`flex-1 z-50 min-h-screen overflow-auto transition-margin duration-300 ease-in-out ${
-                      isOpen ? "ml-64" : "ml-28"
-                    }`}
-                  >
-                    <div className="container mx-auto">
-                      {children}
-                      <ToastContainer />
-                    </div>
+                <SiteConfigProvider>
+                  <section className="flex min-h-screen items-start">
+                    <StudentSidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+                    <section
+                      className={`flex-1 z-50 min-h-screen overflow-auto transition-margin duration-300 ease-in-out ${
+                        isOpen ? "ml-64" : "ml-28"
+                      }`}
+                    >
+                      <div className="container mx-auto">
+                        {children}
+                        <ToastContainer />
+                      </div>
+                    </section>
                   </section>
-                </section>
+                </SiteConfigProvider>
               </QueryProvider>
             </UserProvider>
           </ProtectedRoute>

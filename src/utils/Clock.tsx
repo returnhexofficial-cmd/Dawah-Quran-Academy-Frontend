@@ -17,6 +17,7 @@ interface PrayerData {
   readableDate: string;
   hijriMonth: string;
   hijriYear: string;
+  dateKey: string;
 }
 
 const PRAYER_KEYS: (keyof Timings)[] = [
@@ -35,33 +36,77 @@ const BANGLA_NAMES: Record<keyof Timings, string> = {
   Isha: "ইশা",
 };
 
+// Dhaka. The Aladhan `timingsByCity` endpoint geocodes "Dhaka" to junk
+// coordinates, so always ask by latitude/longitude instead.
+const LATITUDE = 23.8103;
+const LONGITUDE = 90.4125;
+const TIME_ZONE = "Asia/Dhaka";
+// method 1 = University of Islamic Sciences, Karachi (Fajr 18°, Isha 18°) —
+// the convention Islamic Foundation Bangladesh follows.
+// school 1 = Hanafi Asr (shadow ratio 2).
+const METHOD = 1;
+const SCHOOL = 1;
+
+/** "16:24", "16:24 (+06)" and "16:24 (BST)" all parse. */
+function parseTime(time: string) {
+  const match = time.match(/(\d{1,2}):(\d{2})/);
+  if (!match) return null;
+  return { h: Number(match[1]) % 24, m: Number(match[2]) };
+}
+
 function toAmPm(time: string) {
-  const [h, m] = time.split(":").map(Number);
-  const ampm = h >= 12 ? "PM" : "AM";
-  const h12 = h % 12 || 12;
-  return `${h12}:${String(m).padStart(2, "0")} ${ampm}`;
+  const parsed = parseTime(time);
+  if (!parsed) return time;
+  const ampm = parsed.h >= 12 ? "PM" : "AM";
+  const h12 = parsed.h % 12 || 12;
+  return `${h12}:${String(parsed.m).padStart(2, "0")} ${ampm}`;
 }
 
-function nowMinutes() {
-  const now = new Date();
-  return now.getHours() * 60 + now.getMinutes();
+function toMinutes(time: string) {
+  const parsed = parseTime(time);
+  return parsed ? parsed.h * 60 + parsed.m : null;
 }
 
-function getCurrentPrayer(timings: Timings): keyof Timings | null {
-  const now = nowMinutes();
+/**
+ * Prayer times are for Dhaka, so "now" has to be Dhaka's clock too —
+ * otherwise a visitor abroad sees the wrong prayer highlighted.
+ */
+function dhakaNow() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(new Date());
+
+  const get = (type: string) =>
+    parts.find((part) => part.type === type)?.value ?? "00";
+
+  return {
+    dd: get("day"),
+    mm: get("month"),
+    yyyy: get("year"),
+    minutes: (Number(get("hour")) % 24) * 60 + Number(get("minute")),
+  };
+}
+
+function getCurrentPrayer(timings: Timings, now: number): keyof Timings | null {
   let cur: keyof Timings | null = null;
   for (const k of PRAYER_KEYS) {
-    const [h, m] = timings[k].split(":").map(Number);
-    if (h * 60 + m <= now) cur = k;
+    const mins = toMinutes(timings[k]);
+    if (mins !== null && mins <= now) cur = k;
   }
-  return cur;
+  // Before Fajr we are still inside last night's Isha.
+  return cur ?? "Isha";
 }
 
-function getNextPrayer(timings: Timings) {
-  const now = nowMinutes();
+function getNextPrayer(timings: Timings, now: number) {
   for (const k of PRAYER_KEYS) {
-    const [h, m] = timings[k].split(":").map(Number);
-    if (h * 60 + m > now)
+    const mins = toMinutes(timings[k]);
+    if (mins !== null && mins > now)
       return { name: BANGLA_NAMES[k], time: toAmPm(timings[k]) };
   }
   return { name: BANGLA_NAMES["Fajr"], time: toAmPm(timings["Fajr"]) };
@@ -71,8 +116,10 @@ function PrayerWidget() {
   const [data, setData] = useState<PrayerData | null>(null);
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false); // controls animation state
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [now, setNow] = useState(() => dhakaNow().minutes);
   const ref = useRef<HTMLDivElement>(null);
+  const requestedKey = useRef<string | null>(null);
 
   const handleOpen = () => {
     setOpen(true);
@@ -110,16 +157,19 @@ function PrayerWidget() {
   }, [open]);
 
   useEffect(() => {
-    const fetchTimes = async () => {
+    const controller = new AbortController();
+
+    const fetchTimes = async (dd: string, mm: string, yyyy: string) => {
       setLoading(true);
-      const today = new Date();
-      const dd = String(today.getDate()).padStart(2, "0");
-      const mm = String(today.getMonth() + 1).padStart(2, "0");
-      const yyyy = today.getFullYear();
       try {
         const res = await fetch(
-          `https://api.aladhan.com/v1/timingsByCity/${dd}-${mm}-${yyyy}?city=Dhaka&country=Bangladesh&method=2`,
+          `https://api.aladhan.com/v1/timings/${dd}-${mm}-${yyyy}` +
+            `?latitude=${LATITUDE}&longitude=${LONGITUDE}` +
+            `&method=${METHOD}&school=${SCHOOL}` +
+            `&timezonestring=${encodeURIComponent(TIME_ZONE)}`,
+          { signal: controller.signal },
         );
+        if (!res.ok) throw new Error(`Aladhan responded ${res.status}`);
         const json = await res.json();
         const t = json.data.timings;
         const d = json.data.date;
@@ -134,18 +184,46 @@ function PrayerWidget() {
           readableDate: d.readable,
           hijriMonth: d.hijri.month.en,
           hijriYear: d.hijri.year,
+          dateKey: `${dd}-${mm}-${yyyy}`,
         });
       } catch {
-
+        if (controller.signal.aborted) return;
+        // Let the next tick retry instead of leaving the widget stuck empty.
+        requestedKey.current = null;
+        setData(null);
       } finally {
-        setLoading(false);
+        // An aborted request has been superseded; whoever replaced it owns
+        // the loading flag now.
+        if (!controller.signal.aborted) setLoading(false);
       }
     };
-    fetchTimes();
+
+    const tick = () => {
+      const { dd, mm, yyyy, minutes } = dhakaNow();
+      setNow(minutes);
+      // Pull a fresh schedule on first run and whenever the Dhaka date rolls over.
+      const key = `${dd}-${mm}-${yyyy}`;
+      if (requestedKey.current !== key) {
+        requestedKey.current = key;
+        fetchTimes(dd, mm, yyyy);
+      }
+    };
+
+    tick();
+    const id = setInterval(tick, 30_000);
+    return () => {
+      clearInterval(id);
+      controller.abort();
+      // The in-flight request is being killed, so drop the bookkeeping that
+      // says it was already asked for — otherwise a re-run of this effect
+      // (React StrictMode does exactly that in dev, and refs survive it)
+      // would skip the refetch and leave the widget with no data.
+      requestedKey.current = null;
+    };
   }, []);
 
-  const currentPrayer = data ? getCurrentPrayer(data.timings) : null;
-  const nextPrayer = data ? getNextPrayer(data.timings) : null;
+  const currentPrayer = data ? getCurrentPrayer(data.timings, now) : null;
+  const nextPrayer = data ? getNextPrayer(data.timings, now) : null;
 
   return (
     <>

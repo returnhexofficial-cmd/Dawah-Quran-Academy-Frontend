@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "../providers/AuthContext";
 import QueryProvider from "../providers/QueryProvider";
+import { SiteConfigProvider } from "../providers/SiteConfigContext";
 export const metadata: Metadata = {
   title: "Dawah Quran Academy",
   description:
@@ -23,10 +24,12 @@ export default function AuthLayout({
     <html lang="en">
       <body>
         <QueryProvider>
-          <AuthProvider>
-            {children}
-            <ToastContainer />
-          </AuthProvider>
+          <SiteConfigProvider>
+            <AuthProvider>
+              {children}
+              <ToastContainer />
+            </AuthProvider>
+          </SiteConfigProvider>
         </QueryProvider>
       </body>
     </html>

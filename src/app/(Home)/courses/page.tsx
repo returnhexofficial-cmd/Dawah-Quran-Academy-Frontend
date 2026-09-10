@@ -4,24 +4,19 @@ import GetInTouch from "@/utils/GetInTouch";
 import useCourses from "@/hooks/useCourses";
 import { TCourse } from "@/types/course.type";
 import Link from "next/link";
-import { useState } from "react";
-import {
-  FaQuoteRight,
-  FaUser,
-  FaUserFriends,
-  FaStar,
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
+import { CSSProperties, useState } from "react";
+import { FaQuoteRight } from "react-icons/fa";
 import { LuBook, LuClock } from "react-icons/lu";
-import { HiOutlineUserGroup } from "react-icons/hi";
-import CourseCard from "@/utils/CourseCard";
+import EmptyState from "@/utils/EmptyState";
 import LoadingSpinner from "@/utils/LoadingSpinner";
+import SectionHeading from "@/utils/SectionHeading";
 
 import bgImg from "@/assets/course/bg-image1.png";
 import Image from "next/image";
+import { useSiteConfig } from "@/app/providers/SiteConfigContext";
 
 const Courses = () => {
+  const { siteConfig } = useSiteConfig();
   const [showAll, setShowAll] = useState<{ [key: string]: boolean }>({});
   const { coursesData, coursesLoading } = useCourses();
 
@@ -33,11 +28,15 @@ const Courses = () => {
 
   return (
     <section className=" ">
-      <Breadcrumbs title="কোর্সসমূহ" />
+      <Breadcrumbs
+        title="কোর্সসমূহ"
+        heading="অনলাইন কুরআন কোর্সসমূহ"
+        description="আপনার সময় ও সামর্থ্য অনুযায়ী কোর্স বেছে নিন এবং আজই শুরু করুন।"
+      />
 
-      <section className="py-20 px-4" style={{ background: "#f0f3f8" }}>
-        <div className="max-w-5xl mx-auto">
-          <p className="text-center text-xl text-primary font-semibold tracking-widest uppercase mb-3">
+      <section className="section-y" style={{ background: "#f0f3f8" }}>
+        <div className="site-container-narrow">
+          <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[3px] text-primary">
             আল-হাদিস
           </p>
 
@@ -105,54 +104,37 @@ const Courses = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4 relative bg-white">
+      <section className="section-y relative bg-white">
         <div className=" absolute z-0 w-full h-full top-0 left-0 right-0">
           <Image src={bgImg} alt="bg-image" className="w-full h-full" />
         </div>
-        <div className="max-w-6xl relative mx-auto z-20">
-          <div className="text-center mb-14">
-            <p
-              className="text-xs font-semibold tracking-widest uppercase mb-2"
-              style={{ color: "#ffd54f" }}
-            >
-              আমাদের প্রোগ্রাম
-            </p>
-            <h2
-              className="text-3xl md:text-4xl font-bold"
-              style={{ color: "#374868" }}
-            >
-              অনলাইন ইসলামিক{" "}
-              <span
-                style={{ color: "#374868", borderBottom: "3px solid #ffd54f" }}
-              >
-                কোর্সসমূহ
-              </span>
-            </h2>
-          </div>
+        <div className="site-container relative z-20">
+          <SectionHeading
+            eyebrow="আমাদের প্রোগ্রাম"
+            title="অনলাইন ইসলামিক"
+            accent="কোর্সসমূহ"
+            description="আপনার সময় ও সামর্থ্য অনুযায়ী সাজানো কোর্সগুলো থেকে বেছে নিন।"
+          />
 
           {coursesLoading ? (
-            <LoadingSpinner
-              className="py-24 bg-white rounded-3xl border border-dashed border-gray-300"
-              label="কোর্সসমূহ লোড হচ্ছে..."
-            />
+            <LoadingSpinner panel label="কোর্সসমূহ লোড হচ্ছে..." />
           ) : hasCourses ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-              {coursesData.data.map((course: TCourse) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+              {coursesData.data.map((course: TCourse, index: number) => (
                 <div
                   key={course._id}
-                  className="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl group flex flex-col"
+                  style={{ "--delay": `${index * 60}ms` } as CSSProperties}
+                  className="fade-up card-surface card-hover group flex flex-col"
                 >
                   {/* Image */}
                   <div className="relative flex h-64 items-center justify-center overflow-hidden bg-primary">
-                    <div className="transition-transform duration-300 group-hover:scale-110">
-                      <img
-                        src={course.img}
-                        alt={course.name}
-                        className="w-full h-64 object-cover"
-                      />
-                    </div>
+                    <img
+                      src={course.img}
+                      alt={course.name}
+                      className="media-zoom h-64 w-full object-cover"
+                    />
 
-                    <span className="absolute left-3 top-3 rounded-full bg-[#ffd54f] px-3 py-1 text-xs font-semibold text-primary">
+                    <span className="card-badge left-4 top-4 bg-accent text-primary">
                       {course.method}
                     </span>
                   </div>
@@ -164,10 +146,10 @@ const Courses = () => {
                       {course.duration}
                     </span>
 
-                    <span className="flex items-center gap-1">
+                    {/* <span className="flex items-center gap-1">
                       <LuBook className="h-4 w-4" />
                       {course.details.length} টি বিষয়
-                    </span>
+                    </span> */}
                   </div>
 
                   {/* Body */}
@@ -203,7 +185,7 @@ const Courses = () => {
                       {course.details.length > 2 && (
                         <button
                           onClick={() => toggleDetails(course._id)}
-                          className="mt-3 text-sm font-semibold text-primary hover:text-[#ffd54f]"
+                          className="mt-3 text-sm font-semibold text-primary underline-offset-4 transition-colors duration-200 hover:text-accent hover:underline"
                         >
                           {showAll[course._id]
                             ? "কম দেখান"
@@ -220,9 +202,10 @@ const Courses = () => {
                       </span>
 
                       <Link
-                        href="https://docs.google.com/forms/not-found"
+                        href={siteConfig.admissionLink}
                         target="_blank"
-                        className="rounded-xl border-2 border-primary bg-primary px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-[#ffd54f] hover:bg-[#ffd54f] hover:text-primary"
+                        rel="noopener noreferrer"
+                        className="btn-primary"
                       >
                         ভর্তি হন
                       </Link>
@@ -232,20 +215,11 @@ const Courses = () => {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
-              <div className="bg-primary/10 p-6 rounded-full mb-6">
-                <LuBook className="text-5xl text-primary" />
-              </div>
-
-              <h3 className="text-2xl font-bold text-primary mb-2">
-                কোনো কোর্স পাওয়া যায়নি
-              </h3>
-
-              <p className="text-gray-500 max-w-md leading-7">
-                এই মুহূর্তে আমাদের কোনো কোর্স চালু নেই। অনুগ্রহ করে পরে আবার
-                চেক করুন, নতুন কোর্স শীঘ্রই যুক্ত করা হবে।
-              </p>
-            </div>
+            <EmptyState
+              icon={LuBook}
+              title="কোনো কোর্স পাওয়া যায়নি"
+              description="এই মুহূর্তে আমাদের কোনো কোর্স চালু নেই। অনুগ্রহ করে পরে আবার চেক করুন, নতুন কোর্স শীঘ্রই যুক্ত করা হবে।"
+            />
           )}
         </div>
       </section>

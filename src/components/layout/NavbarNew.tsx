@@ -13,19 +13,21 @@ import { LuLogOut } from "react-icons/lu";
 import { useRouter, usePathname } from "next/navigation";
 
 import { handleLogout, useAuth } from "@/app/providers/AuthContext";
+import { useSiteConfig } from "@/app/providers/SiteConfigContext";
 import { useUser } from "@/app/providers/UserContext";
 import logo from "@/assets/logo1.jpeg";
 
 const navItems = [
   { name: "হোম", href: "/" },
-  { name: "কোর্সসমূহ", href: "/courses" },  //  /courses
+  { name: "কোর্সসমূহ", href: "/courses" }, //  /courses
   { name: "বইসমূহ", href: "/books" },
   { name: "শিক্ষকবৃন্দ", href: "/teachers" },
-  { name: "যোগাযোগ", href: "/contact" },  //  /contact
+  { name: "যোগাযোগ", href: "/contact" }, //  /contact
 ];
 
 export default function NavbarNew() {
   const [isOpen, setIsOpen] = useState(false);
+  const { siteConfig } = useSiteConfig();
   const { profile } = useUser();
   const router = useRouter();
   const pathname = usePathname();
@@ -70,14 +72,20 @@ export default function NavbarNew() {
         }`}
       >
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-5 py-4 bg-primary">
+        <div className="flex items-center justify-between px-4 py-3 bg-primary">
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2"
           >
-            <Image src={logo} alt="logo" width={36} height={36} />
-            <span className="text-white font-bold text-base">
+            <Image
+              src={logo}
+              alt="logo"
+              width={32}
+              height={32}
+              className="h-8 w-8 object-contain"
+            />
+            <span className="text-white font-bold text-sm leading-tight">
               Dawah Quran Academy BD
             </span>
           </Link>
@@ -107,7 +115,8 @@ export default function NavbarNew() {
             </Link>
           ))}
           <Link
-            href="/admission"
+            href={siteConfig.admissionLink}
+            target="_blank"
             onClick={() => setIsOpen(false)}
             className="flex items-center px-5 py-3.5 text-[15px] text-gray-700 hover:bg-gray-50 hover:text-[#0f1f3d] transition-colors border-b border-gray-50"
           >
@@ -159,7 +168,8 @@ export default function NavbarNew() {
           )}
 
           <Link
-            href="/admission"
+            href={siteConfig.admissionLink}
+            target="_blank"
             onClick={() => setIsOpen(false)}
             className="flex items-center justify-center w-full py-2.5 bg-primary rounded-lg text-white text-sm font-semibold hover:bg-[#0f1f3d] transition-colors"
           >
@@ -169,13 +179,15 @@ export default function NavbarNew() {
           <div className="flex items-center gap-2 pt-2">
             <span className="text-xs text-gray-500">Follow Us:</span>
             <a
-              href="#"
+              href={siteConfig.facebookLink}
+              target="_blank"
               className="w-7 h-7 grid place-items-center rounded-full bg-gray-100 text-primary hover:bg-[#c8a951] hover:text-white transition-colors"
             >
               <BsFacebook size={12} />
             </a>
             <a
-              href="#"
+              href={siteConfig.whatsappLink}
+              target="_blank"
               className="w-7 h-7 grid place-items-center rounded-full bg-gray-100 text-primary hover:bg-[#c8a951] hover:text-white transition-colors"
             >
               <BsWhatsapp size={12} />
@@ -187,19 +199,17 @@ export default function NavbarNew() {
       {/* ═══════════ MAIN HEADER ═══════════ */}
       <header className="w-full bg-white shadow-sm sticky top-0 z-30">
         {/* ── Top Mini-Bar (dark) ── */}
-        <div className="bg-[#0B240F] text-white text-[13px] hidden md:block">
-          <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between h-11">
+        <div className="bg-[#0B240F] text-white text-[12px] hidden md:block">
+          <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between h-9">
             {/* Left: contact info */}
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <IoMdCall className="text-[#c8a951]" size={15} />
-                <span className="text-gray-200">+8801852-955611</span>
+                <span className="text-gray-200">{siteConfig.phone}</span>
               </div>
               <div className="hidden lg:flex items-center gap-2">
                 <IoMdMail className="text-[#c8a951]" size={15} />
-                <span className="text-gray-200">
-                  muinulislammuin16802@gmail.com
-                </span>
+                <span className="text-gray-200">{siteConfig.email}</span>
               </div>
             </div>
 
@@ -207,13 +217,15 @@ export default function NavbarNew() {
             <div className="flex items-center gap-3">
               <span className="text-gray-300">Follow Us:</span>
               <a
-                href="#"
+                href={siteConfig.facebookLink}
+                target="_blank"
                 className="text-gray-300 hover:text-[#c8a951] transition-colors"
               >
                 <BsFacebook size={13} />
               </a>
               <a
-                href="#"
+                href={siteConfig.whatsappLink}
+                target="_blank"
                 className="text-gray-300 hover:text-[#c8a951] transition-colors"
               >
                 <BsWhatsapp size={13} />
@@ -224,36 +236,28 @@ export default function NavbarNew() {
 
         {/* ── Main Navbar Row ── */}
         <div className="relative overflow-hidden bg-white">
-          <div className=" absolute w-[20%] bg-primary  h-full">
-
-          </div>
+          <div className=" absolute w-[20%] bg-primary  h-full"></div>
           <div className="max-w-[1400px] mx-auto flex items-stretch justify-between">
             {/* Logo block — angled blue panel like reference */}
             <Link href="/" className="relative flex items-center">
-              <div className="relative pl-6 pr-16 py-5 flex items-center gap-3 ">
-                <div className=" z-[5] absolute w-[100%] clip-angled h-full bg-primary">
-                </div>
+              <div className="relative pl-4 pr-11 py-2.5 md:pl-6 md:pr-14 md:py-3 flex items-center gap-2 md:gap-3">
+                <div className=" z-[5] absolute w-[100%] clip-angled h-full bg-primary"></div>
                 <Image
                   src={logo}
                   alt="logo"
                   width={48}
                   height={48}
-                  className="object-contain relative z-10"
+                  className="object-contain relative z-10 h-9 w-9 md:h-11 md:w-11"
                 />
-                <div className="leading-tight relative z-10"> 
-                  <h1 className="text-white font-bold text-lg  md:text-xl tracking-wide">
-                     Dawah 
-                  </h1>
-                  <h1 className="text-white font-bold text-lg md:text-xl tracking-wide">
-                     Quran
-                  </h1>
-                  <p className="text-[#c8a951] text-[10px] tracking-[0.2em] font-medium uppercase">
+                <div className="leading-none relative z-10">
+                  <p className="text-white font-bold text-base md:text-xl tracking-wide whitespace-nowrap">
+                    Dawah Quran
+                  </p>
+                  <p className="text-[#c8a951] text-[9px] md:text-[10px] tracking-[0.2em] font-medium uppercase mt-0.5">
                     Academy
                   </p>
                 </div>
-                <div className=" absolute w-[25%] -bottom-5 rotate-[150deg]  bg-[#0B240F] h-full clip-angled  -right-5">
-
-                </div>
+                <div className=" absolute w-[25%] -bottom-5 rotate-[150deg]  bg-[#0B240F] h-full clip-angled  -right-5"></div>
               </div>
               {/* angled cut using inline style for cross-browser */}
               <style jsx>{`
@@ -279,7 +283,7 @@ export default function NavbarNew() {
                     className={`relative text-[15px] font-medium transition-colors py-2 ${
                       active
                         ? "text-[#c8a951]"
-                        : "text-primary hover:text-[#c8a951]" 
+                        : "text-primary hover:text-[#c8a951]"
                     }`}
                   >
                     {item.name}
@@ -290,7 +294,8 @@ export default function NavbarNew() {
                 );
               })}
               <Link
-                href="/admission"
+                href={siteConfig.admissionLink}
+                target="_blank"
                 className={`text-[15px] font-medium transition-colors py-2 ${
                   pathname === "/admission"
                     ? "text-[#c8a951]"
@@ -303,14 +308,12 @@ export default function NavbarNew() {
 
             {/* Right: icons + auth + CTA */}
             <div className="hidden md:flex items-center gap-3 pr-6">
-
-
               {/* Auth area */}
               {isLoggedIn ? (
                 <div className="flex items-center gap-2">
                   <button
                     onClick={goDashboard}
-                    className="relative h-10 w-10 rounded-full overflow-hidden bg-primary text-white grid place-items-center"
+                    className="relative h-9 w-9 rounded-full overflow-hidden bg-primary text-white grid place-items-center"
                   >
                     {profile.avatar ? (
                       <Image
@@ -328,7 +331,7 @@ export default function NavbarNew() {
                   <button
                     onClick={() => handleLogout(router)}
                     aria-label="logout"
-                    className="p-2 rounded-md text-red-500 hover:bg-red-50 transition-colors"
+                    className="p-1.5 rounded-md text-red-500 hover:bg-red-50 transition-colors"
                   >
                     <LuLogOut size={18} />
                   </button>
@@ -336,7 +339,7 @@ export default function NavbarNew() {
               ) : (
                 <Link
                   href="/login"
-                  className="px-5 h-11 inline-flex items-center justify-center rounded-md border border-[#c8a951] text-[#c8a951] text-sm font-semibold hover:bg-[#c8a951] hover:text-white transition-colors"
+                  className="px-4 h-9 inline-flex items-center justify-center rounded-md border border-[#c8a951] text-[#c8a951] text-sm font-semibold hover:bg-[#c8a951] hover:text-white transition-colors"
                 >
                   Login
                 </Link>
@@ -344,19 +347,20 @@ export default function NavbarNew() {
 
               {/* Primary CTA — Donate-style */}
               <Link
-                href="/admission"
-                className="px-6 h-11 inline-flex items-center justify-center rounded-md bg-primary text-white text-sm font-semibold hover:bg-[#083519] transition-colors shadow-md"
+                href={siteConfig.admissionLink}
+                target="_blank"
+                className="px-5 h-9 inline-flex items-center justify-center rounded-md bg-primary text-white text-sm font-semibold hover:bg-[#083519] transition-colors shadow-md"
               >
                 ভর্তি হন
               </Link>
             </div>
 
             {/* ── Mobile Right: avatar + CTA + hamburger ── */}
-            <div className="flex md:hidden items-center gap-2 pr-3">
+            <div className="flex md:hidden items-center gap-1.5 pr-2.5">
               {isLoggedIn && (
                 <button
                   onClick={goDashboard}
-                  className="relative h-9 w-9 rounded-full overflow-hidden bg-primary text-white grid place-items-center"
+                  className="relative h-8 w-8 rounded-full overflow-hidden bg-primary text-white grid place-items-center"
                 >
                   {profile.avatar ? (
                     <Image
@@ -374,8 +378,9 @@ export default function NavbarNew() {
               )}
 
               <Link
-                href="/admission"
-                className="hidden sm:inline-flex px-3 h-9 items-center justify-center rounded-md bg-[#c8a951] text-white text-xs font-semibold"
+                href={siteConfig.admissionLink}
+                target="_blank"
+                className="hidden sm:inline-flex px-3 h-8 items-center justify-center rounded-md bg-[#c8a951] text-white text-[11px] font-semibold whitespace-nowrap"
               >
                 ভর্তি হন
               </Link>
@@ -383,9 +388,9 @@ export default function NavbarNew() {
               <button
                 onClick={() => setIsOpen((o) => !o)}
                 aria-label={isOpen ? "close-menu" : "open-menu"}
-                className="w-10 h-10 grid place-items-center rounded-md bg-primary text-white"
+                className="w-8 h-8 grid place-items-center rounded-md bg-primary text-white"
               >
-                {isOpen ? <ImCross size={14} /> : <CiMenuFries size={22} />}
+                {isOpen ? <ImCross size={13} /> : <CiMenuFries size={19} />}
               </button>
             </div>
           </div>

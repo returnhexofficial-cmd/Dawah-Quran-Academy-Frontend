@@ -52,9 +52,12 @@ function ResetPasswordForm() {
       })
       .catch((error) => {
         const errorMessage = error.response?.data?.message;
-        if (errorMessage === "jwt expired") {
+        const errorCode = error.response?.data?.errorCode;
+        // The API now reports expiry as a 401 with an explicit code rather
+        // than by leaking jsonwebtoken's raw "jwt expired" message.
+        if (errorCode === "TOKEN_EXPIRED" || errorCode === "TOKEN_INVALID") {
           router.push("/forget-password");
-          toast.error("Token expired, please request a new reset link.");
+          toast.error("Reset link expired, please request a new one.");
         } else toast.error(errorMessage || "Reset failed");
       })
       .finally(() => {

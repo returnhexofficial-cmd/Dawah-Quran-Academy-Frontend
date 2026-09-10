@@ -37,8 +37,8 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="container my-20 lg:my-32">
-      <h2 className="text-3xl lg:text-4xl xl:text-5xl duration-200 text-center text-darker font-bold mt-12 mb-6 lg:mt-20 lg:mb-10">
+    <section className="site-container section-y">
+      <h2 className="text-3xl lg:text-4xl xl:text-5xl duration-200 text-center text-darker font-bold mb-10 lg:mb-12">
         শিক্ষার্থীদের <span className="text-primary">মন্তব্য</span>
       </h2>
       {/* swiper starts */}

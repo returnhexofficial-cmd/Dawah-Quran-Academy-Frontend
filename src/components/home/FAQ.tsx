@@ -40,8 +40,8 @@ const FAQ = () => {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="bg-[#f0f0f5] py-20 lg:py-28">
-      <div className="container1 px-4 ">
+    <section className="bg-[#f0f0f5] section-y">
+      <div className="site-container">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-12 items-start">
 
           {/* Left */}

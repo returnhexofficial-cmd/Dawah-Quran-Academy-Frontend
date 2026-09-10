@@ -20,14 +20,14 @@ const StudentStatus = () => {
   ];
 
   return (
-    <section className="bg-[#F2F3F5] py-16 lg:py-24">
-      <div className="container mx-auto px-4 max-w-5xl">
+    <section className="bg-[#F2F3F5] section-y">
+      <div className="site-container-narrow">
 
         {/* Section heading */}
         <p className="text-center text-[11px] uppercase tracking-[3px] text-[#8a7a60] mb-2">
           আমাদের সম্পর্কে
         </p>
-        <h2 className="text-center text-3xl font-bold text-primary mb-12">
+        <h2 className="text-center text-3xl font-bold text-primary mb-10 lg:mb-12">
           আলহামদুলিল্লাহ!
         </h2>
 

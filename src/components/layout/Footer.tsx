@@ -6,6 +6,7 @@ import mckp from "@/assets/footer/mosqu1.png";
 import Image from "next/image";
 import Link from "next/link";
 import { BsFacebook, BsWhatsapp } from "react-icons/bs";
+import { useSiteConfig } from "@/app/providers/SiteConfigContext";
 
 const quickLinks = [
   { name: "হোম", href: "/" },
@@ -15,10 +16,10 @@ const quickLinks = [
   { name: "যোগাযোগ", href: "/contact" },
 ];
 
-const resources = [
+const buildResources = (admissionLink: string) => [
   {
     name: "ভর্তি",
-    href: "https://docs.google.com/forms/not-found",
+    href: admissionLink,
   },
   {
     name: "গোপনীয়তা নীতি",
@@ -35,9 +36,11 @@ const resources = [
 ];
 
 const Footer = () => {
+  const { siteConfig } = useSiteConfig();
+  const resources = buildResources(siteConfig.admissionLink);
+
   return (
     <footer className="relative bg-black text-light font-sans mt-28 lg:mt-72 xl:mt-60">
-
       <div className="pointer-events-none absolute bottom-52 left-0 hidden lg:block lg:w-[880px] lg:h-[1200px] xl:w-[1080px] xl:h-[780px] 2xl:w-[1360px] 2xl:h-[940px]">
         <Image
           src={mckp}
@@ -70,10 +73,9 @@ const Footer = () => {
           </div>
 
           <p className="leading-7 text-white">
-            অভিজ্ঞ শিক্ষকদের মাধ্যমে শিশু ও প্রাপ্তবয়স্কদের জন্য
-            এক-টু-ওয়ান লাইভ ক্লাস, নমনীয় সময়সূচি এবং ব্যক্তিগত
-            তত্ত্বাবধানে সহীহভাবে কুরআন শিক্ষা প্রদান করাই আমাদের
-            লক্ষ্য।
+            অভিজ্ঞ শিক্ষকদের মাধ্যমে শিশু ও প্রাপ্তবয়স্কদের জন্য ওয়ান-টু-ওয়ান
+            লাইভ ক্লাস, নমনীয় সময়সূচি এবং ব্যক্তিগত তত্ত্বাবধানে সহীহভাবে
+            কুরআন শিক্ষা প্রদান করাই আমাদের লক্ষ্য।
           </p>
         </div>
 
@@ -123,14 +125,13 @@ const Footer = () => {
           </h4>
 
           <p className="mb-5 leading-7 text-white">
-            আমাদের সর্বশেষ আপডেট, ঘোষণা এবং ইসলামিক
-            শিক্ষামূলক কনটেন্ট পেতে আমাদের সামাজিক
-            যোগাযোগমাধ্যমে যুক্ত থাকুন।
+            আমাদের সর্বশেষ আপডেট, ঘোষণা এবং ইসলামিক শিক্ষামূলক কনটেন্ট পেতে
+            আমাদের সামাজিক যোগাযোগমাধ্যমে যুক্ত থাকুন।
           </p>
 
           <div className="flex gap-5">
             <Link
-              href="https://www.facebook.com/profile.php?id=61573213246773"
+              href={siteConfig.facebookLink}
               target="_blank"
               className="rounded-full border border-white p-3 text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
             >
@@ -138,7 +139,7 @@ const Footer = () => {
             </Link>
 
             <Link
-              href="https://wa.me/8801852955611"
+              href={siteConfig.whatsappLink}
               target="_blank"
               className="rounded-full border border-white p-3 text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54f] hover:text-[#ffd54f]"
             >

@@ -2,11 +2,13 @@
 import hero from "@/assets/hero_lottie.json";
 import { Button1, Button2 } from "@/utils/Button";
 import Lottie from "lottie-react";
+import { useSiteConfig } from "@/app/providers/SiteConfigContext";
 
 const Hero = () => {
+  const { siteConfig } = useSiteConfig();
   return (
-    <section className="bg-hero relative pt-20 md:pt-32 w-screen px-8 flex justify-center items-center ">
-      <section className="container flex flex-col md:flex-row justify-between items-center z-10 gap-5">
+    <section className="bg-hero relative section-y-lg flex justify-center items-center">
+      <section className="site-container flex flex-col md:flex-row justify-between items-center z-10 gap-5">
         <Lottie
           className="max-w-80 sm:max-w-sm md:max-w-xl duration-300 -z-50"
           animationData={hero}
@@ -32,7 +34,7 @@ const Hero = () => {
             <Button2 text="যোগাযোগ" to="/contact" />
             <Button1
               text="এডমিশন"
-              to="https://docs.google.com/forms/not-found"
+              to={siteConfig.admissionLink}
               target="_blank"
             />
           </div>

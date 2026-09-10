@@ -113,10 +113,10 @@ const AdmissionProcess = () => {
         </section>
       </section> */}
 
-      <section className="container1 py-14 lg:py-20">
+      <section className="site-container section-y">
         <div>
           <div>
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl duration-200 text-darker font-bold mb-6  lg:mb-10">
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl duration-200 text-darker font-bold mb-10 lg:mb-12">
               <span className="text-primary">এডমিশন</span> প্রক্রিয়া
             </h2>
           </div>
